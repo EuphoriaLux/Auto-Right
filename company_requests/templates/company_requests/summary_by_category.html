@@ -1,0 +1,149 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/tables_styles.css' %}">
+{% endblock %}
+
+{% load company_filters %}
+
+{% block content %}
+  <div class="main-content">
+    <div class="container mt-7">
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Track Request Sending</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Requests</th>
+                    <th scope="col">Compliance Score</th>
+                    <th scope="col">Risks</th>
+
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr data-bs-toggle="collapse" data-bs-target="#collapse{{ category.id }}" class="accordion-toggle">
+
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <a href="#" class="avatar rounded-circle mr-3">
+                            <i class="fas fa-phone-volume"></i>
+                          </a>
+                          <div class="media-body">
+                            <span class="mb-0 text-sm">{{ category.name }}</span>
+                          </div>
+                        </div>
+                      </th>
+                      <td>
+                        {{ category.get_total_requests_sent }}
+                      </td>
+                      
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2">{{ category.get_average_compliance_score }}%</span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="{{ category.get_average_compliance_score }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ category.get_average_compliance_score }}%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div class="avatar-group">
+                          {% for risk in category.risk.all %}
+                          <a href="#" class="avatar avatar-sm colored-border" style="background-color: {{ risk.get_icon_color }};" data-bs-toggle="tooltip" data-bs-placement="top" title="{{risk.name}} - {{ risk.description }}">
+                            <i class="{{ risk.icon }}"></i>
+                          </a>
+                          {% endfor %}
+                        </div>
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-warning"></i>
+                        </span>
+                      </td>
+
+
+
+                    
+                      <td class="text-right">
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="bg-transparent">
+                      <td colspan="6" class="hiddenRow p-0">
+                        <div class="accordion-body collapse" id="collapse{{ category.id }}">
+                          <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                              <thead class="thead-light">
+                                <tr>
+                                  <th scope="col">Company</th>
+                                  <th scope="col">Request Date</th>
+                                  <th scope="col">Request Type</th>
+                                  <th scope="col">Status</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for group in category.company_groups.all %}
+                                  {% for company in group.companies.all %}
+                                    {% for request in company.user_requests %}
+                                      <tr>
+                                        <td>{{ company.legal_name }}</td>
+                                        <td>{{ request.request_date }}</td>
+                                        <td>{{ request.get_request_type_display }}</td>
+                                        <td>
+                                          <span class="badge {{ request.status|status_to_bootstrap_class }}">
+                                            {{ request.status }}
+                                          </span>
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                  {% endfor %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+{% endblock %}

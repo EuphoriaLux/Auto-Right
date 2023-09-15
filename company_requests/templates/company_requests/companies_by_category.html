@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Companies by Category</h1>
+    <div class="row">
+        {% for category in categories %}
+            <div class="col-xl-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        {{ category.name }}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for group in category.company_groups.all %}
+                            {% for company in group.companies.all %}
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                           
+                                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 30px; height: 30px" class="rounded-circle" />
+                                            <div class="ms-3">
+                                                <p class="fw-bold mb-1">{{ company.legal_name }}</p>
+                                                <p class="text-muted mb-0">{{ company.email }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+                        <a class="btn btn-link m-0 text-reset" href="#" role="button" data-ripple-color="primary">Message<i class="fas fa-envelope ms-2"></i></a>
+                        <a class="btn btn-link m-0 text-reset" href="#" role="button" data-ripple-color="primary">Call<i class="fas fa-phone ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

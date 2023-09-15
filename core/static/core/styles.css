@@ -1,0 +1,241 @@
+/* Basic Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #6c757d;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+/* Body and global styles */
+body, html {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    color: var(--black);
+    background: var(--bg-light);
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Make sure the body takes up the full height */
+}
+
+/* Header */
+header nav {
+    padding: 0.5rem 0;
+}
+
+/* Hero Section */
+.hero {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+
+/* Features Section */
+.features {
+    padding: 4rem 0;
+    background-color: var(--bg-light);
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    transition: transform .3s ease;
+}
+
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Add this to your existing styles.css file */
+.category-cards {
+    display: flex;
+    flex-wrap: nowrap;  /* Prevents wrapping into the new line */
+    overflow-x: auto;   /* Adds horizontal scroll when the cards exceed the container width */
+    margin-top: 50px;   /* Add margin to the top to avoid overlap */
+    gap: 2em;
+}
+
+.feature.selected {
+    border: 2px solid red !important;
+}
+
+
+.profile-menu {
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+
+/* Footer */
+footer {
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 2rem 0;
+    flex-shrink: 0;  /* Prevent the footer from shrinking if there's not enough space */
+}
+
+/* Utilities */
+.clickable {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.clickable:hover {
+    opacity: 0.7;
+}
+
+/* Button styling */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-light {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+.btn-light:hover {
+    background-color: #f1f1f1;
+    color: var(--secondary-color);
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--white);
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ccc;
+}
+
+.content-wrapper {
+    flex: 1 0 auto;  /* Allow the content to grow and shrink, but not to be shorter than its content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center the form horizontally */
+}
+
+
+/* Dropdown */
+.dropdown-menu {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* Secure Feel */
+.secure-link::before {
+    content: "\f023"; 
+    font-family: "Font Awesome 5 Free";
+    padding-right: 5px;
+}
+
+
+/* Profile Page Navigation with Custom Class */
+.profile-nav {
+    background-color: var(--primary-color);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.profile-nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.profile-nav ul li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.profile-nav ul li::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.profile-nav ul li:hover::before {
+    width: 100%;
+}
+
+.profile-nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-nav ul li a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+
+/* Section Styling */
+div[id*='-section'] {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-light);
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+

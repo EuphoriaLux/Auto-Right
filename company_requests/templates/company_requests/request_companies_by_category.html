@@ -1,0 +1,185 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/form_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="register-form">
+        <h2 class="register-title">Auto Data-Rights</h2>
+        <form method="post">
+            {% csrf_token %}
+            <section class="pt-3 pb-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="mb-3">Categories</h3>
+                        </div>
+                        <div class="col-12">
+                            <div id="categoryCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                                <div class="carousel-inner">
+                                    {% for category in form.fields.categories.queryset %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-1">
+                                                <div class="card" data-id="{{ category.id }}" onclick="toggleCategory(event.target);">
+
+
+
+
+
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">
+                                                            {{ category.name }}
+                                                            <span class="badge bg-primary company-count" style="display:none;">{{ category.get_company_count }} {{category.name}}</span>
+                                                        </h4>
+                                                        <p class="card-text">
+                                                            {{ category.description }}
+                                                            <div class="d-inline">
+                                                                <h5>Potential Risk</h5>
+                                                                {% for risk in category.get_related_risks %}
+                                                                <span class="badge rounded-pill bg-warning text-dark" style="border: 2px solid {{ risk.get_icon_color }};" data-bs-toggle="tooltip" data-placement="top" title="{{ risk.description }}">
+                                                                    <i class="{{ risk.icon }}" aria-hidden="true"></i>
+                                                                    {{ risk.name }}
+                                                                </span>
+                                                            {% endfor %}
+                                                            
+                                                                
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div><div class="carousel-controls d-flex align-items-center justify-content-between">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+                                        <i class="fas fa-chevron-left fa-2x"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </button>
+                                    
+                                    <div class="authorization-section">
+                                        <!-- Add your h3 tag here -->
+                                        <h3 class="authorization-title">Authorization Forms</h3>
+                                        
+
+                                    </div>
+                                
+                                    <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+                                        <i class="fas fa-chevron-right fa-2x"></i>
+                                        <span class="sr-only">Next</span>
+                                    </button>
+                                </div>
+                                <div id="authorizationFormContainer">
+                                    <!-- Dynamic Authorization form will be inserted here -->
+                                    <!-- ... -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <input type="hidden" name="categories" id="selectedCategories">
+
+            <div id="infoContainer" class="alert alert-info" style="display:none;">
+                <!-- Info will be inserted here -->
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+                <input type="text" id="{{ form.content.id_for_label }}" name="{{ form.content.name }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.request_type.id_for_label }}">{{ form.request_type.label }}</label>
+                <select id="{{ form.request_type.id_for_label }}" name="{{ form.request_type.name }}" class="form-control">
+                    <option value="" disabled selected>Select Request Type</option>
+                    {% for choice in form.request_type %}
+                        <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary register-btn">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+
+    let selectedCategories = [];
+
+    function toggleCategory(element) {
+        const cardElement = element.closest('.card'); 
+        const categoryId = cardElement.getAttribute('data-id'); 
+    
+        if (categoryId) {
+            const index = selectedCategories.indexOf(categoryId);
+            
+            if (index === -1) {
+                selectedCategories.push(categoryId);
+                cardElement.classList.add('selected'); 
+            } else {
+                selectedCategories.splice(index, 1);
+                cardElement.classList.remove('selected'); 
+            }
+    
+            const selectedCategoriesStr = selectedCategories.join(',');
+            document.getElementById('selectedCategories').value = selectedCategoriesStr;
+            
+            // Fetch the appropriate Authorization form based on selected categories
+            fetchAuthorizationForm(categoryId);
+        }
+    
+        const infoContainer = document.getElementById('infoContainer');
+        infoContainer.innerHTML = ""; 
+        infoContainer.style.display = "none";  
+        
+        selectedCategories.forEach((id) => {
+            const selectedCard = document.querySelector(`.card[data-id='${id}']`);
+            if (selectedCard) {
+                const companyCountSpan = selectedCard.querySelector('.badge.bg-primary.company-count');
+                const companyCount = companyCountSpan ? companyCountSpan.textContent : '';
+                
+                infoContainer.innerHTML += `${companyCount}<br>`;
+            }
+        });
+        
+        if (selectedCategories.length > 0) {
+            infoContainer.style.display = "block";
+        }
+    }
+        
+    document.addEventListener('DOMContentLoaded', function() {
+        const requestTypeDropdown = document.getElementById('id_request_type');
+        if (requestTypeDropdown) {
+            requestTypeDropdown.addEventListener('change', function() {
+                const selectedRequestType = this.value;
+                fetchAuthorizationForm();  // Call this function whenever the request type changes
+            });
+        }
+    });
+    
+    // Updated fetchAuthorizationForm to not require parameters
+    function fetchAuthorizationForm() {
+        const selectedRequestType = document.getElementById('id_request_type').value;  // Get the selected request type
+        const selectedCategoriesStr = selectedCategories.join(',');
+        fetch(`/get_authorization_form/?category_ids=${selectedCategoriesStr}&request_type=${selectedRequestType}`)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('authorizationFormContainer').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+    
+</script>
+{% endblock %}
