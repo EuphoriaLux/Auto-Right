@@ -24,11 +24,6 @@
                                         <div class="row">
                                             <div class="col-md-12 mb-1">
                                                 <div class="card" data-id="{{ category.id }}" onclick="toggleCategory(event.target);">
-
-
-
-
-
                                                     <div class="card-body">
                                                         <h4 class="card-title">
                                                             {{ category.name }}
@@ -61,12 +56,8 @@
                                     </button>
                                     
                                     <div class="authorization-section">
-                                        <!-- Add your h3 tag here -->
                                         <h3 class="authorization-title">Authorization Forms</h3>
-                                        
-
                                     </div>
-                                
                                     <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
                                         <i class="fas fa-chevron-right fa-2x"></i>
                                         <span class="sr-only">Next</span>
@@ -82,14 +73,18 @@
                 </div>
             </section>
             
-            <input type="hidden" name="categories" id="selectedCategories">
+            <input type="text" name="categories" id="selectedCategories">
+
+            <input type="hidden" name="selected_scopes" id="selectedScopes">
+
+            <div id="scopeContainer">
+                <!-- Dynamic scopes will be inserted here -->
+            </div>
+            
+
 
             <div id="infoContainer" class="alert alert-info" style="display:none;">
-                <!-- Info will be inserted here -->
             </div>
-
-
-
 
             <div class="form-group">
                 <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
@@ -115,14 +110,16 @@
 <script>
 
     let selectedCategories = [];
+    let selectedScopes = []; 
 
     function toggleCategory(element) {
+        console.log('toggleCategory called'); 
         const cardElement = element.closest('.card'); 
         const categoryId = cardElement.getAttribute('data-id'); 
     
         if (categoryId) {
             const index = selectedCategories.indexOf(categoryId);
-            
+    
             if (index === -1) {
                 selectedCategories.push(categoryId);
                 cardElement.classList.add('selected'); 
@@ -131,32 +128,32 @@
                 cardElement.classList.remove('selected'); 
             }
     
-            const selectedCategoriesStr = selectedCategories.join(',');
-            document.getElementById('selectedCategories').value = selectedCategoriesStr;
-            
+            // Update the hidden input field as a list of integers
+            const categoriesAsInt = selectedCategories.map(Number); // Convert to integers
+            document.getElementById('selectedCategories').value = categoriesAsInt.join(',');
+    
             // Fetch the appropriate Authorization form based on selected categories
             fetchAuthorizationForm(categoryId);
         }
-    
-        const infoContainer = document.getElementById('infoContainer');
-        infoContainer.innerHTML = ""; 
-        infoContainer.style.display = "none";  
-        
-        selectedCategories.forEach((id) => {
-            const selectedCard = document.querySelector(`.card[data-id='${id}']`);
-            if (selectedCard) {
-                const companyCountSpan = selectedCard.querySelector('.badge.bg-primary.company-count');
-                const companyCount = companyCountSpan ? companyCountSpan.textContent : '';
-                
-                infoContainer.innerHTML += `${companyCount}<br>`;
-            }
-        });
-        
-        if (selectedCategories.length > 0) {
-            infoContainer.style.display = "block";
-        }
+        console.log("Updated Selected Categories: ", selectedCategories);
     }
-        
+    
+    
+    
+    function toggleScope(scopeId) {
+        console.log('toggleScope called with:', scopeId); // Debugging line
+        const index = selectedScopes.indexOf(scopeId);
+        if (index === -1) {
+            selectedScopes.push(scopeId);
+        } else {
+            selectedScopes.splice(index, 1);
+        }
+        document.getElementById('selectedScopes').value = selectedScopes.join(',');
+        console.log("Updated Selected Scopes: ", selectedScopes); // Debugging line
+        console.log("Selected Scopes Input Value: ", document.getElementById('selectedScopes').value); // Debugging line
+    }
+    
+    
     document.addEventListener('DOMContentLoaded', function() {
         const requestTypeDropdown = document.getElementById('id_request_type');
         if (requestTypeDropdown) {
@@ -167,19 +164,34 @@
         }
     });
     
-    // Updated fetchAuthorizationForm to not require parameters
     function fetchAuthorizationForm() {
-        const selectedRequestType = document.getElementById('id_request_type').value;  // Get the selected request type
+        const selectedRequestType = document.getElementById('id_request_type').value;
         const selectedCategoriesStr = selectedCategories.join(',');
-        fetch(`/get_authorization_form/?category_ids=${selectedCategoriesStr}&request_type=${selectedRequestType}`)
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('authorizationFormContainer').innerHTML = html;
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+        
+        if (selectedCategoriesStr && selectedRequestType) {
+            fetch(`/get_authorization_form/?category_ids=${selectedCategoriesStr}&request_type=${selectedRequestType}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('authorizationFormContainer').innerHTML = html;
+                
+                
+                // TODO: Extract the scopes from the HTML and populate them in 'scopeContainer'
+                console.log('Fetched new authorization form. Checking scopes...'); // Debugging line
+                const scopeCheckboxes = document.querySelectorAll('.scope-checkbox');
+                console.log('Found scope checkboxes:', scopeCheckboxes); // Debugging line
+                scopeCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        toggleScope(this.getAttribute('data-id'));
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        }
     }
     
+
 </script>
+
 {% endblock %}

@@ -1,9 +1,10 @@
-<!-- Update this in your authorization_form.html -->
+<!-- authorization_form.html -->
 
 {% for scope in scopes %}
   <div class="authorization-scope">
     <h4>Authorization Form for {{ scope.name }}</h4>
-    <p>This form is for the authorization scope: {{ scope.description }}.</p>
+    <p>This form is for the authorization scope: {{ scope.description }}</p>
+    <input type="checkbox" class="scope-checkbox" data-id="{{ scope.id }}" />
     <!-- Add your form fields specific to this scope here -->
   </div>
 {% endfor %}
