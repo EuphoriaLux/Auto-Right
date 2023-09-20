@@ -126,3 +126,54 @@ Stalking: Limit the personal information that is publicly available, reducing th
 3. **Educational Fraud**: Academic records could be altered or misused.
 4. **Social Engineering**: Personal information could be used to manipulate or deceive you.
 
+
+
+
+**AUTHORIZATION FORM FOR DATA SUPPRESSION**
+
+Date: [Date]
+
+I, [Your Full Name], residing at [Your Address], [Postal Code], [City], LU, email address [Your Email Address] hereby authorize [Company Name], with registered address at [Company's Address], [Postal Code] [City], Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf to request the suppression of my personal data under applicable privacy legislation, including the General Data Protection Regulation (‘GDPR’).
+
+I agree and acknowledge that:
+
+- The Agent may withdraw from this limited representation at its sole discretion.
+- This Authorization form will terminate automatically with respect to any particular natural or legal person against which my rights under the Privacy Laws are being exercised, once that particular legal or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+
+[Your Full Name]
+
+---
+
+**AUTHORIZATION FORM FOR DATA RETRIEVAL**
+
+Date: [Date]
+
+I, [Your Full Name], residing at [Your Address], [Postal Code], [City], LU, email address [Your Email Address] hereby authorize [Company Name], with registered address at [Company's Address], [Postal Code] [City], Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf to retrieve my personal data under applicable privacy legislation, including the General Data Protection Regulation (‘GDPR’).
+
+I agree and acknowledge that:
+
+- The Agent may withdraw from this limited representation at its sole discretion.
+- This Authorization form will terminate automatically with respect to any particular natural or legal person against which my rights under the Privacy Laws are being exercised, once that particular legal or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+
+[Your Full Name]
+
+---
+
+**AUTHORIZATION FORM FOR DATA MODIFICATION**
+
+Date: [Date]
+
+I, [Your Full Name], residing at [Your Address], [Postal Code], [City], LU, email address [Your Email Address] hereby authorize [Company Name], with registered address at [Company's Address], [Postal Code] [City], Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf to modify my personal data under applicable privacy legislation, including the General Data Protection Regulation (‘GDPR’).
+
+I agree and acknowledge that:
+
+- The Agent may withdraw from this limited representation at its sole discretion.
+- This Authorization form will terminate automatically with respect to any particular natural or legal person against which my rights under the Privacy Laws are being exercised, once that particular legal or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+
+[Your Full Name]
+
+---
+
+Each form is tailored to the specific request type and grants the 'Agent' (in this case, the company being authorized) the ability to act on behalf of the user in accordance with GDPR for that specific request. 
+
+You can adjust the fields inside the brackets as per your system's structure to automate the process or to use them as templates.

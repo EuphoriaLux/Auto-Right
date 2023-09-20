@@ -15,7 +15,8 @@
 }
 
 /* Body and global styles */
-body, html {
+body,
+html {
     font-family: 'Arial', sans-serif;
     line-height: 1.8;
     color: var(--black);
@@ -26,7 +27,8 @@ body, html {
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;  /* Make sure the body takes up the full height */
+    min-height: 100vh;
+    /* Make sure the body takes up the full height */
 }
 
 /* Header */
@@ -60,7 +62,7 @@ header nav {
     margin-bottom: 2rem;
     border-radius: 0.5rem;
     background-color: #fff;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform .3s ease;
 }
 
@@ -84,9 +86,12 @@ header nav {
 /* Add this to your existing styles.css file */
 .category-cards {
     display: flex;
-    flex-wrap: nowrap;  /* Prevents wrapping into the new line */
-    overflow-x: auto;   /* Adds horizontal scroll when the cards exceed the container width */
-    margin-top: 50px;   /* Add margin to the top to avoid overlap */
+    flex-wrap: nowrap;
+    /* Prevents wrapping into the new line */
+    overflow-x: auto;
+    /* Adds horizontal scroll when the cards exceed the container width */
+    margin-top: 50px;
+    /* Add margin to the top to avoid overlap */
     gap: 2em;
 }
 
@@ -101,7 +106,7 @@ header nav {
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -110,7 +115,8 @@ footer {
     background: var(--secondary-color);
     color: var(--white);
     padding: 2rem 0;
-    flex-shrink: 0;  /* Prevent the footer from shrinking if there's not enough space */
+    flex-shrink: 0;
+    /* Prevent the footer from shrinking if there's not enough space */
 }
 
 /* Utilities */
@@ -158,10 +164,12 @@ footer {
 }
 
 .content-wrapper {
-    flex: 1 0 auto;  /* Allow the content to grow and shrink, but not to be shorter than its content */
+    flex: 1 0 auto;
+    /* Allow the content to grow and shrink, but not to be shorter than its content */
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center the form horizontally */
+    align-items: center;
+    /* Center the form horizontally */
 }
 
 
@@ -173,7 +181,7 @@ footer {
 
 /* Secure Feel */
 .secure-link::before {
-    content: "\f023"; 
+    content: "\f023";
     font-family: "Font Awesome 5 Free";
     padding-right: 5px;
 }
@@ -236,6 +244,5 @@ div[id*='-section'] {
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     background-color: var(--bg-light);
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-

@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
+EMAIL_KEY = os.getenv('EMAIL_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -157,6 +158,6 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "cpanel101.luxhosting.lu"
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "info@power-up.lu"
-EMAIL_HOST_PASSWORD = "Z1J?FzNe{-+p"
+EMAIL_HOST_PASSWORD = EMAIL_KEY
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True  # Since you're using port 465, you probably want to use SSL

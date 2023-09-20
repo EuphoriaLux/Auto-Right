@@ -1,125 +1,125 @@
+<!-- request_companies_by_category.html -->
 {% extends "core/base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'core/form_styles.css' %}">
 {% endblock %}
-
 {% block content %}
     <div class="register-form">
-        <h2 class="register-title">Auto Data-Rights</h2>
         <form method="post">
             {% csrf_token %}
             <section class="pt-3 pb-3">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <h3 class="mb-3">Categories</h3>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-6">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="col-6">
+                                <label for="{{ form.request_type.id_for_label }}" class="form-label">{{ form.request_type.label }}</label>
+                                <select id="{{ form.request_type.id_for_label }}" name="{{ form.request_type.name }}" class="form-select">
+                                    <option value="" disabled selected>Select Request Type</option>
+                                    {% for choice in form.request_type %}
+                                        <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                         <div class="col-12">
                             <div id="categoryCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
                                 <div class="carousel-inner">
+
                                     {% for category in form.fields.categories.queryset %}
                                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                        <div class="row">
-                                            <div class="col-md-12 mb-1">
-                                                <div class="card" data-id="{{ category.id }}" onclick="toggleCategory(event.target);">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">
-                                                            {{ category.name }}
-                                                            <span class="badge bg-primary company-count" style="display:none;">{{ category.get_company_count }} {{category.name}}</span>
-                                                        </h4>
-                                                        <p class="card-text">
-                                                            {{ category.description }}
-                                                            <div class="d-inline">
-                                                                <h5>Potential Risk</h5>
-                                                                {% for risk in category.get_related_risks %}
-                                                                <span class="badge rounded-pill bg-warning text-dark" style="border: 2px solid {{ risk.get_icon_color }};" data-bs-toggle="tooltip" data-placement="top" title="{{ risk.description }}">
-                                                                    <i class="{{ risk.icon }}" aria-hidden="true"></i>
-                                                                    {{ risk.name }}
+                                        <div class="row"> <!-- Centering the content -->
+                                            <div class="col-md-12 mb-3">
+                                                <div class="card shadow-sm h-100" data-id="{{ category.id }}" onclick="{% if category.id not in disabled_categories %}toggleCategory(event.target.closest('.card'));{% endif %}" {% if category.id in disabled_categories %}style="background-color: #f0f0f0;"{% endif %}>
+                                                    <div class="card-body d-flex flex-column">
+                                                        <h4 class="card-title mb-2">{{ category.name }}</h4>
+                                                        <p class="card-text">{{ category.description }}</p>
+                                                        <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                                                            <div class="d-flex align-items-center">
+                                                                <h6 class="mb-0 mr-2">Potential Risks</h6>
+                                                                <span class="badge bg-warning risk-count">
+                                                                    <i class="fas fa-exclamation-triangle"></i> {{ category.get_related_risks.count }}
                                                                 </span>
-                                                            {% endfor %}
-                                                            
-                                                                
                                                             </div>
-                                                        </p>
+                                                            <div class="d-flex align-items-center">
+                                                                <h6 class="mb-0 mr-2">Potential Companies</h6>
+                                                                <span class="badge bg-primary company-count">
+                                                                    <i class="fas fa-building"></i> {{ category.get_company_count }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-3">
+                                                            {% for risk in category.get_related_risks %}
+                                                            <div class="col-md-4 col-sm-6 my-2">
+                                                                <div class="card risk-card border-0 h-100 shadow-sm" style="border-left: 4px solid {{ risk.get_icon_color }};">
+                                                                    <div class="card-body">
+                                                                        <div class="d-flex align-items-center justify-content-between">
+                                                                            <h6 class="mb-0">{{ risk.name }}</h6>
+                                                                            <span data-bs-toggle="tooltip" data-placement="top" title="{{ risk.description }}">
+                                                                                <i class="{{ risk.icon }}" aria-hidden="true" style="color: {{ risk.get_icon_color }};"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     {% endfor %}
-                                </div><div class="carousel-controls d-flex align-items-center justify-content-between">
+                                    
+
+                                    
+                                </div>
+                                <div class="carousel-controls d-flex align-items-center justify-content-between">
                                     <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
                                         <i class="fas fa-chevron-left fa-2x"></i>
                                         <span class="sr-only">Previous</span>
                                     </button>
-                                    
-                                    <div class="authorization-section">
-                                        <h3 class="authorization-title">Authorization Forms</h3>
+                                    <div class="carousel-instructions">
+                                        <p>Use the arrows to navigate through the categories.</p>
                                     </div>
                                     <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
                                         <i class="fas fa-chevron-right fa-2x"></i>
                                         <span class="sr-only">Next</span>
                                     </button>
                                 </div>
-                                <div id="authorizationFormContainer">
-                                    <!-- Dynamic Authorization form will be inserted here -->
-                                    <!-- ... -->
-                                </div>
+                                    <div id="authorizationFormContainer">
+                                        <!-- Dynamic Authorization form will be inserted here -->
+                                    </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            
-            <input type="text" name="categories" id="selectedCategories">
-
-            <input type="hidden" name="selected_scopes" id="selectedScopes">
-
+            </section>          
+            <input type="text" name="categories" id="selectedCategories" style="display:none;">
             <div id="scopeContainer">
-                <!-- Dynamic scopes will be inserted here -->
             </div>
-            
-
-
             <div id="infoContainer" class="alert alert-info" style="display:none;">
             </div>
-
-            <div class="form-group">
-                <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
-                <input type="text" id="{{ form.content.id_for_label }}" name="{{ form.content.name }}" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="{{ form.request_type.id_for_label }}">{{ form.request_type.label }}</label>
-                <select id="{{ form.request_type.id_for_label }}" name="{{ form.request_type.name }}" class="form-control">
-                    <option value="" disabled selected>Select Request Type</option>
-                    {% for choice in form.request_type %}
-                        <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
             <button type="submit" class="btn btn-primary register-btn">Submit</button>
         </form>
     </div>
 {% endblock %}
-
 {% block extra_js %}
-<script>
 
+<script>
     let selectedCategories = [];
     let selectedScopes = []; 
-
+    
     function toggleCategory(element) {
-        console.log('toggleCategory called'); 
         const cardElement = element.closest('.card'); 
         const categoryId = cardElement.getAttribute('data-id'); 
-    
+        
         if (categoryId) {
             const index = selectedCategories.indexOf(categoryId);
-    
+        
             if (index === -1) {
                 selectedCategories.push(categoryId);
                 cardElement.classList.add('selected'); 
@@ -127,71 +127,120 @@
                 selectedCategories.splice(index, 1);
                 cardElement.classList.remove('selected'); 
             }
-    
-            // Update the hidden input field as a list of integers
+        
             const categoriesAsInt = selectedCategories.map(Number); // Convert to integers
             document.getElementById('selectedCategories').value = categoriesAsInt.join(',');
-    
-            // Fetch the appropriate Authorization form based on selected categories
+        
             fetchAuthorizationForm(categoryId);
         }
-        console.log("Updated Selected Categories: ", selectedCategories);
     }
     
-    
-    
-    function toggleScope(scopeId) {
-        console.log('toggleScope called with:', scopeId); // Debugging line
+    function toggleScope(scopeId, isChecked) {
         const index = selectedScopes.indexOf(scopeId);
-        if (index === -1) {
+        const scopeContainer = document.getElementById('scopeContainer');
+        scopeContainer.innerHTML = ''; // Clear any existing hidden input fields
+    
+        if (isChecked && index === -1) {
             selectedScopes.push(scopeId);
-        } else {
+        } else if (!isChecked && index !== -1) {
             selectedScopes.splice(index, 1);
         }
-        document.getElementById('selectedScopes').value = selectedScopes.join(',');
-        console.log("Updated Selected Scopes: ", selectedScopes); // Debugging line
-        console.log("Selected Scopes Input Value: ", document.getElementById('selectedScopes').value); // Debugging line
+    
+        selectedScopes.forEach(scopeId => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'selected_scopes';
+            input.value = scopeId;
+            scopeContainer.appendChild(input);
+        });
     }
     
+    function buildFetchUrl() {
+        const selectedRequestType = document.getElementById('id_request_type').value;
+        const selectedCategoriesStr = selectedCategories.join(',');
+        return `/get_authorization_form/?category_ids=${selectedCategoriesStr}&request_type=${selectedRequestType}`;
+    }
     
+    function fetchAuthorizationForm() {
+        const fetchUrl = buildFetchUrl();
+        
+        // If there are no selected categories, clear the authorization form and exit.
+        if (selectedCategories.length === 0) {
+            const authorizationFormContainer = document.getElementById('authorizationFormContainer');
+            authorizationFormContainer.innerHTML = ""; // Clear the form
+            return; // Exit the function early
+        }
+        
+        fetch(fetchUrl)
+        .then(response => {
+            if (response.ok) {  
+                return response.text();
+            } else {
+                return Promise.reject(`Failed to fetch the authorization form. HTTP Status: ${response.status}`);
+            }
+        })
+        .then(html => {
+            const authorizationFormContainer = document.getElementById('authorizationFormContainer');
+            authorizationFormContainer.innerHTML = html;
+            attachEventListeners(authorizationFormContainer);
+        
+            // Set the request type dropdown to the first available choice
+            const requestTypeDropdown = document.getElementById('id_request_type');
+            if (requestTypeDropdown && requestTypeDropdown.options.length > 1) { // check if there are options available
+                requestTypeDropdown.selectedIndex = 1; // select the first option
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+
+    function attachEventListeners(container) {
+        container.addEventListener('change', function(event) {
+            if (event.target.matches('.scope-checkbox, .form-check-input')) {
+                const scopeId = event.target.getAttribute('data-id');
+                const isChecked = event.target.checked;
+                toggleScope(scopeId, isChecked);
+        
+                const signatureElement = document.querySelector('.signature[data-id="' + scopeId + '"]');
+                const signaturePlaceholderElement = document.querySelector('.signature-placeholder[data-id="' + scopeId + '"]');
+        
+                if (isChecked) {
+                    signaturePlaceholderElement.style.display = "none";  // Hide the placeholder
+                    signatureElement.style.display = "block";  // Show the signature
+                } else {
+                    signaturePlaceholderElement.style.display = "block";  // Show the placeholder
+                    signatureElement.style.display = "none";   // Hide the signature
+                }
+            }                        
+        });
+    
+        // Handle the toggle for "Read More"/"Read Less"
+        const toggleLink = container.querySelector('[data-bs-toggle="collapse"]');
+        if (toggleLink) {
+            const collapseElementId = toggleLink.getAttribute('href').slice(1); // Remove the '#' from href
+            const collapseElement = document.getElementById(collapseElementId);
+    
+            collapseElement.addEventListener('show.bs.collapse', function() {
+                toggleLink.textContent = 'Read Less';
+            });
+        
+            collapseElement.addEventListener('hide.bs.collapse', function() {
+                toggleLink.textContent = 'Read More';
+            });
+        }
+    }
+       
     document.addEventListener('DOMContentLoaded', function() {
         const requestTypeDropdown = document.getElementById('id_request_type');
         if (requestTypeDropdown) {
-            requestTypeDropdown.addEventListener('change', function() {
-                const selectedRequestType = this.value;
-                fetchAuthorizationForm();  // Call this function whenever the request type changes
-            });
+            requestTypeDropdown.addEventListener('change', fetchAuthorizationForm);
         }
+    
+        // Initial setup
+        const authorizationFormContainer = document.getElementById('authorizationFormContainer');
+        attachEventListeners(authorizationFormContainer);
     });
-    
-    function fetchAuthorizationForm() {
-        const selectedRequestType = document.getElementById('id_request_type').value;
-        const selectedCategoriesStr = selectedCategories.join(',');
-        
-        if (selectedCategoriesStr && selectedRequestType) {
-            fetch(`/get_authorization_form/?category_ids=${selectedCategoriesStr}&request_type=${selectedRequestType}`)
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('authorizationFormContainer').innerHTML = html;
-                
-                
-                // TODO: Extract the scopes from the HTML and populate them in 'scopeContainer'
-                console.log('Fetched new authorization form. Checking scopes...'); // Debugging line
-                const scopeCheckboxes = document.querySelectorAll('.scope-checkbox');
-                console.log('Found scope checkboxes:', scopeCheckboxes); // Debugging line
-                scopeCheckboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
-                        toggleScope(this.getAttribute('data-id'));
-                    });
-                });
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-        }
-    }
-    
 
 </script>
-
 {% endblock %}

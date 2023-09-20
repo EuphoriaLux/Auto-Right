@@ -65,9 +65,18 @@ class Category(models.Model):
 
     def get_related_scopes(self):
         return self.authorization_scopes.all()
+        
+    def get_risks_grouped_by_category(self):
+        # Get unique CategoryRisk IDs associated with the risks
+        category_risk_ids = Risk.objects.filter(related_categories=self).values_list('category', flat=True).distinct()
+        
+        # Fetch the CategoryRisk objects
+        return CategoryRisk.objects.filter(id__in=category_risk_ids)
 
     def __str__(self):
         return self.name
+
+
 
 class CompanyGroup(models.Model):
     name = models.CharField(max_length=200)
@@ -140,7 +149,7 @@ class CompanyRequest(models.Model):
     request_date = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     status = models.CharField(max_length=20, choices=REQUEST_STATUS, default='unsubmitted', db_index=True)  
-    request_type = models.CharField(max_length=30, choices=REQUEST_TYPES, default='data_suppression')
+    request_type = models.CharField(max_length=30, choices=REQUEST_TYPES, default='data_suppression', verbose_name="Type of Request")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -155,7 +164,7 @@ class AuthorizationScope(models.Model):
     )
     name = models.CharField(max_length=100)
     description = models.TextField()
-    request_type = models.CharField(max_length=30, choices=REQUEST_TYPES)  # New field
+    request_type = models.CharField(max_length=30, choices=REQUEST_TYPES, verbose_name="Type of Request")  # New field
     category = models.ForeignKey('Category', null=True, blank=True, related_name='authorization_scopes', on_delete=models.SET_NULL)
 
     def __str__(self):

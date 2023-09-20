@@ -12,12 +12,17 @@ class CompanyRequestForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         # Handling request types
-        self.fields['request_type'].choices = [
+        available_request_types = [
             (choice[0], choice[1])
             for choice in CompanyRequest.REQUEST_TYPES  # This is your choices field in your model
             if AuthorizationScope.objects.filter(request_type=choice[0]).exists()
         ]
 
+        self.fields['request_type'].choices = available_request_types
+
+        # Setting initial to the first available request type
+        if available_request_types:
+            self.fields['request_type'].initial = available_request_types[0][0]
 
     def clean_categories(self):
         categories = self.cleaned_data.get('categories')
@@ -28,4 +33,4 @@ class CompanyRequestForm(forms.ModelForm):
 
     class Meta:
         model = CompanyRequest
-        fields = ['content', 'request_type']  # R
+        fields = ['request_type']  # Removed 'content' from here

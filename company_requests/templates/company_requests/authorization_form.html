@@ -1,10 +1,70 @@
 <!-- authorization_form.html -->
 
 {% for scope in scopes %}
-  <div class="authorization-scope">
-    <h4>Authorization Form for {{ scope.name }}</h4>
-    <p>This form is for the authorization scope: {{ scope.description }}</p>
-    <input type="checkbox" class="scope-checkbox" data-id="{{ scope.id }}" />
-    <!-- Add your form fields specific to this scope here -->
-  </div>
+<div class="authorization-scope">
+    <h4>AUTHORIZATION FORM FOR DATA SUPPRESSION</h4>
+    <p>Date: {{ user_details.date_joined|date:'d-m.Y' }}</p>
+
+
+    <p>
+        I, {{ user_details.first_name }} {{ user_details.last_name }},
+        residing at 
+        {{ user_details.adress_street }},
+        {{ user_details.adress_zipcode }}, 
+        {{ user_details.adress_city }}, LU, 
+        email address 
+        {{ user_details.email }}
+        ...
+    </p>
+            <div class="collapse" id="collapsibleContent">
+                <p>
+
+            hereby authorize Power-Up, with registered address at 10, rue des bons malades, L-6462 Echternach, 
+            Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf 
+            to request the suppression of my personal data under applicable privacy legislation, including the General 
+            Data Protection Regulation (‘GDPR’).
+        </p>
+
+
+    <p>I agree and acknowledge that:</p>
+    <ul>
+        <li>The Agent may withdraw from this limited representation at its sole discretion.</li>
+        <li>
+            This Authorization form will terminate automatically with respect to any particular natural or legal 
+            person against which my rights under the Privacy Laws are being exercised, once that particular legal 
+            or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+        </li>
+    </ul>
+
+</div>
+
+<a class="btn btn-link" data-bs-toggle="collapse" href="#collapsibleContent" role="button" aria-expanded="false" aria-controls="collapsibleContent">
+    Read More
+</a>
+
+
+
+
+  <div class="signature-field" data-id="{{ scope.id }}">
+    <!-- Placeholder for the signature -->
+    <div class="signature-placeholder" data-id="{{ scope.id }}">
+        Sign here...
+    </div>
+
+    <!-- The actual signature -->
+    <div class="signature handwritten" data-id="{{ scope.id }}" style="display: none;">
+        {{ user_details.first_name }} {{ user_details.last_name }}
+    </div>
+</div>
+
+<div class="form-check consent-section">
+    <input type="checkbox" class="form-check-input scope-checkbox" id="consent{{ scope.id }}" data-id="{{ scope.id }}" name="consent{{ scope.id }}">
+    <label class="form-check-label" for="consent{{ scope.id }}">
+        I, {{ user_details.first_name }} {{ user_details.last_name }}, consent to this Authorization Form for {{ scope.name }}.
+    </label>
+</div>
+
+
+  
+</div>
 {% endfor %}
