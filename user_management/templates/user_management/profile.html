@@ -1,27 +1,52 @@
-{% extends "core/base.html" %}
+{% extends "core/new_base.html" %}
+{% load static %}
+{% block extra_css %}
 
-
+{% endblock %}
 
 {% block content %}
-<div class="profile-menu">
-    <!-- Navigation Bar -->
-    <nav class="profile-nav">
-        <ul>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
-            <li><a href="#payment-section">Payment</a></li>
-        </ul>
-    </nav>
-<!-- Profile Section -->
-    <div id="profile-section">
-        <h2>Profile</h2>
-        <p>Email: {{ user.email }}</p>
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Last Name: {{ user.last_name }}</p>
-        <p>Street: {{ user.adress_street }} {{user.adress_city}} L-{{user.adress_zipcode}}</p>
-        <!-- templates/email_test.html -->
-
-    <button onclick="location.href='{% url 'send_email' %}'">Send Test Email</button>
+<div class="infos section" id="infos">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class ="main-content">
+                    <div class="row">    
+                        <div class="col-lg-6">
+                            <div class="left-image">
+                                <img src="{% static 'assets/images/left-infos.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="section-heading ">
+                                    <h2>Profile</h2>
+                                <div class="line-dec">
+                                </div>
+                                    <div id="profile-section">
+                                        <p><strong>Email:</strong> {{ user.email }}</p>
+                                        <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                                        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                                        <p><strong>Street:</strong> {{ user.adress_street }}, {{ user.adress_city }}, L-{{ user.adress_zipcode }}</p>
+                                        <button onclick="location.href='{% url 'edit_profile' %}'" class="btn btn-primary">Edit Profile</button>  
+                                        <button onclick="location.href='{% url 'send_email' %}'" class="btn btn-primary">Send Test Email</button>
+                                    </div>
+                            </div>
+                            <div class="skills">
+                                <div class="skill-slide media">
+                                    <div class="fill"></div>
+                                        <h6>Social Media Managing</h6>
+                                        <span>95%</span>
+                                    </div>
+                                <p class="more-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers eiusmod tempor incididunt ut labore et dolore dolor dolor sit amet, consectetur adipiscing elit, sed doers eiusmod.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+{% block extra_js %} 
+{% endblock %}
 {% endblock %}

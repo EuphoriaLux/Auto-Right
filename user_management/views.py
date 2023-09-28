@@ -44,7 +44,7 @@ def login_view(request):
 # Logout view
 def logout_view(request):
     logout(request)
-    return redirect('homepage')
+    return redirect('index')
 
 # User profile view
 @login_required
@@ -78,7 +78,6 @@ def profile_view(request):
 
 
 # views.py
-
 def onboarding_step1(request):
     if request.method == 'POST':
         form = OnboardingStep1Form(request.POST, instance=request.user)

@@ -1,63 +1,72 @@
-{% extends "core/base.html" %}
+{% extends "core/new_base.html" %}
 
 {% block content %}
-
-
-<h2 class="register-title">Register</h2>
-
-<!-- Display form-wide errors -->
-{% if form.non_field_errors %}
-    <div class="alert alert-danger">
-        {{ form.non_field_errors }}
-    </div>
-{% endif %}
-<form method="post" class="register-form">
-    {% csrf_token %}
-    <div class="form-group">
-        {{ form.email.label_tag }} 
-        {{ form.email }}
-        {% if form.email.errors %}
-            <div class="alert alert-danger">
-                {{ form.email.errors }}
+<div class="main-banner" id="top">
+    <div class="container">
+        <div class="row"> <!-- Start of row -->
+            <!-- Introduction Section -->
+            <div class="col-lg-6">
+                <div class="caption header-text">
+                    <h6>WELCOME TO DATA RIGHTS AUTOMATION IN LUXEMBOURG</h6>
+                    <div class="line-dec"></div>
+                    <h4>Take Command of Your <em>Digital Self</em> <span>Today!</span></h4>
+                    <p>Imagine a digital world where you’re in full control of your personal data. That’s what we offer. With Automate Your Data Rights in Luxembourg, we introduce you to the next level of data management. Don't let your information float aimlessly in the vast digital ocean. Equip yourself with our tool to retrieve, correct, delete, and port your data seamlessly. Why wait? Dive in, and shield yourself from identity theft, spam, data leaks, and much more!</p>
+                    <div class="main-button scroll-to-section"><a href="#features">Discover How It Works</a></div>
+                    <span>or</span>
+                    <div class="second-button"><a href="faqs.html">Got Questions? See FAQs</a></div>
+                </div>
             </div>
-        {% endif %}
-    </div>
-    <div class="form-group">
-        {{ form.first_name.label_tag }}
-        {{ form.first_name }}
-        {% if form.first_name.errors %}
-            <div class="alert alert-danger">
-                {{ form.first_name.errors }}
+            <!-- Login Form Section -->
+            <div class="col-lg-6">
+                <div class="caption header-text">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h5>Create Your Account</h5>
+                                <h5>Join us and take control of your digital identity.</h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <!-- Email -->
+                                    <div class="mb-4">
+                                        <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" placeholder="you@example.com" required>
+                                        {% if form.email.errors %}
+                                            <div class="text-danger">
+                                                {{ form.email.errors.0 }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <!-- Password -->
+                                    <div class="mb-4">
+                                        <label for="{{ form.password1.id_for_label }}" class="form-label">Choose a Password</label>
+                                        <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" placeholder="At least 8 characters" required>
+                                        {% if form.password1.errors %}
+                                            <div class="text-danger">
+                                                {{ form.password1.errors.0 }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <!-- Confirm Password -->
+                                    <div class="mb-4">
+                                        <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Your Password</label>
+                                        <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" placeholder="Repeat the password" required>
+                                        {% if form.password2.errors %}
+                                            <div class="text-danger">
+                                                {{ form.password2.errors.0 }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <button type="submit" class="btn btn-primary mt-3 w-100">Join Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {% endif %}
+        </div> <!-- End of row -->
     </div>
-    <div class="form-group">
-        {{ form.last_name.label_tag }}
-        {{ form.last_name }}
-        {% if form.last_name.errors %}
-            <div class="alert alert-danger">
-                {{ form.last_name.errors }}
-            </div>
-        {% endif %}
-    </div>
-    <div class="form-group">
-        {{ form.password1.label_tag }}
-        {{ form.password1 }}
-        {% if form.password1.errors %}
-            <div class="alert alert-danger">
-                {{ form.password1.errors }}
-            </div>
-        {% endif %}
-    </div>
-    <div class="form-group">
-        {{ form.password2.label_tag }}
-        {{ form.password2 }}
-        {% if form.password2.errors %}
-            <div class="alert alert-danger">
-                {{ form.password2.errors }}
-            </div>
-        {% endif %}
-    </div>
-    <button type="submit" class="btn btn-primary register-btn">Register</button>
-</form>
+</div>
 {% endblock %}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %} AutoRight - Data Rights Automation Platform {% endblock %} </title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-tale-seo-agency.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}">
+    <!-- <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/> -->
+
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+
+    {% block extra_css %} {% endblock %}
+
+</head>
+  <!-- ***** Pre-Header Area Start ***** -->
+<body>
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-9">
+                <div class="left-info">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-phone"></i>+352 621 163 882</a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i>info@power-up.lu</a></li>
+                        <li><a href="#"><i class="fa fa-map-marker"></i>🕊️Luxembourg</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-3">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{% url 'index' %}" class="logo">
+                        <div class="logo-container">
+                            <div class="logo">AutoRight</div>
+                          </div>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        {% if not request.user.is_authenticated %}
+                            <li class="scroll-to-section"><a href="#services">Services</a></li>
+                            <li class="scroll-to-section"><a href="#projects">Projects</a></li>
+                            <li class="scroll-to-section"><a href="#infos">Infos</a></li>
+                            {% else %}
+                        <li class="scroll-to-section"><a href="{% url 'create_company_request' %}">Automate</a></li>
+                        <li class="scroll-to-section"><a href="{% url 'summary_by_category' %}">Requests</a></li>
+                        {% endif %}
+
+                        <li class="has-sub">
+                            <a href="javascript:void(0)">User</a>
+                            <ul class="sub-menu">
+                                {% if not request.user.is_authenticated %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                                {% else %}
+                                
+                                <li><a href="{% url 'companies_by_category' %}">View Companies by Category</a></li>
+                                <li><a href="{% url 'profile' %}">Profile</a></li>
+                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% block content %}
+{% endblock %}
+</body>
+
+<footer>
+    <div class="container">
+        <div class="col-lg-12">
+        <p>Copyright © 2023 <a href="#">Power-Up</a>. All rights reserved. 
+        
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'assets/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+<script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+<script src="{% static 'assets/js/tabs.js' %}"></script>
+<script src="{% static 'assets/js/popup.js' %}"></script>
+<script src="{% static 'core/script.js' %}"></script>
+
+{% block extra_js %} 
+{% endblock %}
+</body>
+</html>

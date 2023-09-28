@@ -1,25 +1,29 @@
-{% extends "core/base.html" %}
-
-
+{% extends "core/new_base.html" %}
 
 {% block content %}
-
-<div class="profile-menu">
-    <nav class="profile-nav">
-        <ul>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
-            <li><a href="#payment-section">Payment</a></li>
-        </ul>
-    </nav>
-
-    <div id="profile-section">
-        <h2>Edit Profile</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Update</button>
-        </form>
+<div class="main-banner" id="top">
+    <div class="container">
+        <div class="row"> <!-- Start of row -->
+            <div class="profile-menu">
+                <!-- Navigation Bar -->
+                <nav class="profile-nav">
+                    <ul>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+                        <li><a href="#payment-section">Payment</a></li>
+                    </ul>
+                </nav>
+                <!-- Edit Profile Section -->
+                <div id="profile-section">
+                    <h2>Edit Profile</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-<div>
+</div>
 {% endblock %}
