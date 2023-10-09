@@ -5,40 +5,99 @@
 {% endblock %}
 
 {% block content %}
-<div class="infos section" id="infos">
+
+<div class="infos services section" id="infos">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class ="main-content">
+                <div class="main-content">
                     <div class="row">    
+                        <!-- "We Empower You With One-Click Automation" Section and Service Items -->
                         <div class="col-lg-6">
-                            <div class="left-image">
-                                <img src="{% static 'assets/images/left-infos.jpg' %}" alt="">
+                            <div class="section-heading">
+                                    <h2><em>Overview</em></h2>
+                                    <div class="line-dec"></div>
+                                    <p>Take control of your digital identity by simplifying and automating processes related to personal data management in Luxembourg.</p>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-6">
+                                            <div class="service-item">
+                                                <div class="icon">
+                                                    <!-- Replace with appropriate icon or image -->
+                                                    <img src="{% static 'assets/images/request-icon.jpg' %}" alt="total requests" class="templatemo-feature">
+                                                </div>
+                                                <h4>Total Requests Made</h4>
+                                                <p>{{ total_requests }}</p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-lg-6 col-sm-6">
+                                            <div class="service-item">
+                                                <div class="icon">
+                                                    <!-- Replace with appropriate icon or image -->
+                                                    <img src="{% static 'assets/images/pending-icon.jpg' %}" alt="pending requests" class="templatemo-feature">
+                                                </div>
+                                                <h4>Pending Requests</h4>
+                                                <p>{{ pending_requests }}</p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-lg-6 col-sm-6">
+                                            <div class="service-item">
+                                                <div class="icon">
+                                                    <!-- Replace with appropriate icon or image -->
+                                                    <img src="{% static 'assets/images/completed-icon.jpg' %}" alt="completed requests" class="templatemo-feature">
+                                                </div>
+                                                <h4>Completed Requests</h4>
+                                                <p>{{ completed_requests }}</p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-lg-6 col-sm-6">
+                                            <div class="service-item">
+                                                <div class="icon">
+                                                    <!-- Replace with appropriate icon or image -->
+                                                    <img src="{% static 'assets/images/rejected-icon.jpg' %}" alt="rejected requests" class="templatemo-feature">
+                                                </div>
+                                                <h4>Rejected Requests</h4>
+                                                <p>{{ rejected_requests }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="section-heading ">
-                                    <h2>Profile</h2>
-                                <div class="line-dec">
-                                </div>
-                                    <div id="profile-section">
-                                        <p><strong>Email:</strong> {{ user.email }}</p>
-                                        <p><strong>First Name:</strong> {{ user.first_name }}</p>
-                                        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-                                        <p><strong>Street:</strong> {{ user.adress_street }}, {{ user.adress_city }}, L-{{ user.adress_zipcode }}</p>
-                                        <button onclick="location.href='{% url 'edit_profile' %}'" class="btn btn-primary">Edit Profile</button>  
-                                        <button onclick="location.href='{% url 'send_email' %}'" class="btn btn-primary">Send Test Email</button>
-                                    </div>
-                            </div>
-                            <div class="skills">
-                                <div class="skill-slide media">
-                                    <div class="fill"></div>
-                                        <h6>Social Media Managing</h6>
-                                        <span>95%</span>
-                                    </div>
-                                <p class="more-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers eiusmod tempor incididunt ut labore et dolore dolor dolor sit amet, consectetur adipiscing elit, sed doers eiusmod.</p>
-                            </div>
-                        </div>
+                        <!-- "Profile" Section -->
+<!-- "Profile" Section -->
+<div class="col-lg-6">
+    <div class="section-heading">
+        <h2><em>Profile</em></h2>
+        <div class="line-dec"></div>
+            
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <div class="profile-section">
+                    <p>
+                        <i class="icon fas fa-envelope mr-2"></i>Email: <span class="data-display-inline">{{ user.email }}</span>
+                        <i class="icon fas fa-user ml-4 mr-2"></i>Name: <span class="data-display-inline">{{ user.first_name }} {{ user.last_name }}</span>
+                    </p>
+                    <p>
+                        <i class="icon fas fa-home mr-2"></i>Street: <span class="data-display-inline">{{ user.adress_street }}</span>
+                    </p>
+                    <p>
+                        <i class="icon fas fa-map-marker-alt ml-4 mr-2"></i>ZIP-Code: <span class="data-display-inline">L-{{ user.adress_zipcode }}</span>
+                        <i class="icon fas fa-city ml-4 mr-2"></i>City: <span class="data-display-inline">{{ user.adress_city }}</span>
+                    </p>
+                    <!-- Action Buttons -->
+                    <div class="d-flex mt-2">
+                        <button onclick="location.href='{% url 'edit_profile' %}'" class="btn btn-primary mr-2">Edit Profile</button>  
+                        <button onclick="location.href='{% url 'send_email' %}'" class="btn btn-primary">Send Test Email</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                     </div>
                 </div>
             </div>

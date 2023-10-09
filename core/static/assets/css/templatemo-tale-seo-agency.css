@@ -42,16 +42,32 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
-
-
 /* 
 ---------------------------------------------
 Global Styles
 --------------------------------------------- 
 */
 
-/* Container for the logo and slogan */
+.profile-section .btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.profile-section h4 {
+  margin-bottom: 15px;
+}
+
+.icon {
+  margin-right: 5px;  /* Reduced space between the icon and the label */
+}
+
+.data-display-inline {
+  font-weight: bold;    /* Make the data bold */
+  color: #a32891;       /* Muted shade of magenta */
+  margin-left: 5px;     /* Space after the label */
+}
+
+/* Container for the logo and slogan */
 
 .logo-container {
   display: flex;
@@ -981,17 +997,17 @@ Services Style
   transition: all .4s;
 }
 
+.services .service-item:hover {
+  border-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
 .services .service-item h4 {
   font-size: 20px;
   color: #2a2a2a;
   margin-top: 20px;
   line-height: 30px;
   transition: all .4s;
-}
-
-.services .service-item:hover {
-  border-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 .services .service-item:hover h4 {

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .utils import send_test_email  # Assuming the send_test_email is in utils.py
 from .forms import *
+from company_requests.models import CompanyRequest
 
 
 # Registration view
@@ -46,10 +47,27 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
-# User profile view
+
 @login_required
 def profile(request):
-    return render(request, 'user_management/profile.html', {'user': request.user})
+    total_requests = CompanyRequest.objects.filter(user=request.user).count()
+    pending_requests = CompanyRequest.objects.filter(user=request.user, status='pending').count()
+    completed_requests = CompanyRequest.objects.filter(user=request.user, status='completed').count()
+    rejected_requests = CompanyRequest.objects.filter(user=request.user, status='rejected').count()
+
+    context = {
+        'user': request.user,
+        'total_requests': total_requests,
+        'pending_requests': pending_requests,
+        'completed_requests': completed_requests,
+        'rejected_requests': rejected_requests
+    }
+
+    return render(request, 'user_management/profile.html', context)
+
+
+
+
 
 # Edit profile view
 @login_required
@@ -62,6 +80,10 @@ def edit_profile(request):
     else:
         form = EditProfileForm(instance=request.user)
     return render(request, 'user_management/edit_profile.html', {'form': form})
+
+
+
+
 
 @login_required
 def profile_view(request):

@@ -1,3 +1,11 @@
+To-do
+
+Profile :
+
+Number of Request Sended
+
+
+
 Automate Your Data Rights in Luxembourg
 Overview
 Automate Your Data Rights in Luxembourg is a cutting-edge Django application designed to simplify and automate the management of your personal data rights. With the increasing risks associated with data privacy, it has never been more important to take control of your digital identity. Our application empowers you to do just that, all with a single click!
