@@ -1,10 +1,14 @@
+{% load i18n %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% block title %} AutoRight - Data Rights Automation Platform {% endblock %} </title>
+    <title>{% block title %}{% trans "AutoRight - Data Rights Automation Platform" %}{% endblock %}</title>
+
     {% load static %}
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
@@ -76,28 +80,27 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         {% if not request.user.is_authenticated %}
-                            <li class="scroll-to-section"><a href="#services">Services</a></li>
-                            <li class="scroll-to-section"><a href="#projects">Projects</a></li>
-                            <li class="scroll-to-section"><a href="#infos">Infos</a></li>
-                            {% else %}
-                        <li class="scroll-to-section"><a href="{% url 'create_company_request' %}">Automate</a></li>
-                        <li class="scroll-to-section"><a href="{% url 'summary_by_category' %}">Requests</a></li>
+                            <li class="scroll-to-section"><a href="#services">{% trans "Services" %}</a></li>
+                            <li class="scroll-to-section"><a href="#projects">{% trans "Projects" %}</a></li>
+                            <li class="scroll-to-section"><a href="#infos">{% trans "Infos" %}</a></li>
+                        {% else %}
+                            <li class="scroll-to-section"><a href="{% url 'create_company_request' %}">{% trans "Automate" %}</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'summary_by_category' %}">{% trans "Requests" %}</a></li>
                         {% endif %}
-
+                    
                         <li class="has-sub">
-                            <a href="javascript:void(0)">User</a>
+                            <a href="javascript:void(0)">{% trans "User" %}</a>
                             <ul class="sub-menu">
                                 {% if not request.user.is_authenticated %}
-                                <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
                                 {% else %}
-                                
-                                <li><a href="{% url 'companies_by_category' %}">View Companies by Category</a></li>
-                                <li><a href="{% url 'profile' %}">Profile</a></li>
-                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    <li><a href="{% url 'companies_by_category' %}">{% trans "View Companies by Category" %}</a></li>
+                                    <li><a href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
+                                    <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                                 {% endif %}
                             </ul>
                         </li>
-                    </ul>   
+                    </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
@@ -106,7 +109,26 @@
             </div>
         </div>
     </div>
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{% if redirect_to %}{{ redirect_to }}{% else %}/{% endif %}">
+        <select name="language">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          {% for language in languages %}
+            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+              {{ language.name_local }} ({{ language.code }})
+            </option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Go">
+    </form>
+    
 </header>
+
+
+  
 
 
 {% block content %}
@@ -130,6 +152,11 @@
 <script src="{% static 'assets/js/tabs.js' %}"></script>
 <script src="{% static 'assets/js/popup.js' %}"></script>
 <script src="{% static 'core/script.js' %}"></script>
+
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+<script type="text/javascript">
+    var text = gettext('This text will be translated');
+</script>
 
 {% block extra_js %} 
 {% endblock %}

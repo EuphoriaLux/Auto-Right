@@ -1,0 +1,260 @@
+<!-- request_companies_by_category.html -->
+{% extends "core/new_base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/form_styles.css' %}">
+{% endblock %}
+{% block content %}
+<div class="projects section" id="projects">
+    <div class="container text-center mb-5">
+      <div class="section-heading">
+        <h2 class="mb-3">Explore Our <em>Features</em> &amp; <span>Modules</span></h2>
+        <div class="line-dec mb-3"></div>
+        <p>Our application offers features to ensure optimal data rights management for individuals & Companies</p>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="owl-features owl-carousel">
+        {% for category in form.fields.categories.queryset %}
+        <div class="item" data-id="{{ category.id }}">
+
+            
+          <img src="{% static 'your_image_path_here.jpg' %}" alt="{{ category.name }}" class="mx-auto d-block mb-3">
+          
+          <div class="text-center down-content">
+            <h4 class="mb-2">{{ category.name }}</h4>
+
+                <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                    <div class="d-flex align-items-center">
+                        <h6 class="mb-0 mr-2">Potential Risks</h6>
+                        <span class="badge bg-warning risk-count">
+                            <i class="fas fa-exclamation-triangle"></i> {{ category.get_related_risks.count }}
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <h6 class="mb-0 mr-2">Potential Companies</h6>
+                        <span class="badge bg-primary company-count">
+                            <i class="fas fa-building"></i> {{ category.get_company_count }}
+                        </span>
+                    </div>
+                </div>
+              </div>
+
+              <div class="related-risks row">
+                {% for risk in category.get_related_risks %}
+                <div class="col-md-4 col-sm-6 my-2">
+                  <div class="card risk-card border-0 h-100 shadow-sm text-center" style="border-left: 4px solid {{ risk.get_icon_color }};">
+                    <div class="card-body">
+                      <h6 class="mb-0">{{ risk.name }}</h6>
+                      <span data-bs-toggle="tooltip" data-placement="top" title="{{ risk.description }}">
+                        <i class="{{ risk.icon }}" aria-hidden="true" style="color: {{ risk.get_icon_color }};"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            
+            <!-- Add this somewhere appropriate in your template to store the selectedCategories -->
+            <input type="hidden" id="selectedCategories">
+
+            <div id="authorizationFormContainer_{{ category.id }}" class="mt-auto bg-white p-3">
+                <!-- Content will be loaded here -->
+              </div>
+            
+              <div class="form-group mt-2">
+                {{ form.request_type.label_tag }}
+                {{ form.request_type }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
+{% block extra_js %}
+
+<script>
+
+
+    
+    let selectedCategories = [];
+    let selectedScopes = [];
+
+    function toggleCategory(element) {
+        const itemElement = element.closest('.item');
+        const categoryId = itemElement.getAttribute('data-id');
+
+        if (categoryId) {
+            const index = selectedCategories.indexOf(categoryId);
+
+            if (index === -1) {
+                selectedCategories.push(categoryId);
+                itemElement.classList.add('selected');
+            } else {
+                selectedCategories.splice(index, 1);
+                itemElement.classList.remove('selected');
+            }
+
+            const categoriesAsInt = selectedCategories.map(Number);
+            document.getElementById('selectedCategories').value = categoriesAsInt.join(',');
+
+            fetchAuthorizationForm(itemElement, categoryId);
+        }
+    }
+    
+    function toggleScope(scopeId, isChecked) {
+        const index = selectedScopes.indexOf(scopeId);
+        const scopeContainer = document.getElementById('scopeContainer');
+        scopeContainer.innerHTML = ''; // Clear any existing hidden input fields
+    
+        if (isChecked && index === -1) {
+            selectedScopes.push(scopeId);
+        } else if (!isChecked && index !== -1) {
+            selectedScopes.splice(index, 1);
+        }
+    
+        selectedScopes.forEach(scopeId => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'selected_scopes';
+            input.value = scopeId;
+            scopeContainer.appendChild(input);
+        });
+    }
+    
+    function buildFetchUrl() {
+        const selectedRequestType = document.getElementById('id_request_type').value;
+        const selectedCategoriesStr = selectedCategories.join(',');
+        return `/get_authorization_form/?category_ids=${selectedCategoriesStr}&request_type=${selectedRequestType}`;
+    }
+    
+    function fetchAuthorizationForm(itemElement, categoryId) {
+        const fetchUrl = buildFetchUrl();
+        // Use the passed-in itemElement and categoryId to find the correct container
+        const authorizationFormContainer = itemElement.querySelector(`#authorizationFormContainer_${categoryId}`);
+    
+        // If there are no selected categories, clear the authorization form and exit.
+        if (selectedCategories.length === 0) {
+            if (authorizationFormContainer) {
+                authorizationFormContainer.innerHTML = ""; // Clear the form
+            }
+            return; // Exit the function early
+        }
+        
+        fetch(fetchUrl)
+        .then(response => {
+            if (response.ok) {  
+                return response.text();
+            } else {
+                return Promise.reject(`Failed to fetch the authorization form. HTTP Status: ${response.status}`);
+            }
+        })
+        .then(html => {
+            if (authorizationFormContainer) {
+                authorizationFormContainer.innerHTML = html;
+                attachEventListeners(authorizationFormContainer);
+            }
+        
+            // Set the request type dropdown to the first available choice
+            const requestTypeDropdown = document.getElementById('id_request_type');
+            if (requestTypeDropdown && requestTypeDropdown.options.length > 1) { // check if there are options available
+                requestTypeDropdown.selectedIndex = 1; // select the first option
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+    
+
+    function attachEventListeners(container) {
+        console.log('Container:', container);  // Debugging line
+        if (container) {
+            container.addEventListener('change', function(event) {
+                const scopeId = event.target.getAttribute('data-id');
+                const isChecked = event.target.checked;
+                toggleScope(scopeId, isChecked);
+        
+                const signatureElement = document.querySelector('.signature[data-id="' + scopeId + '"]');
+                const signaturePlaceholderElement = document.querySelector('.signature-placeholder[data-id="' + scopeId + '"]');
+        
+                if (isChecked) {
+                    signaturePlaceholderElement.style.display = "none";  // Hide the placeholder
+                    signatureElement.style.display = "block";  // Show the signature
+                } else {
+                    signaturePlaceholderElement.style.display = "block";  // Show the placeholder
+                    signatureElement.style.display = "none";   // Hide the signature
+                }
+            });
+            
+            // Handle the toggle for "Read More"/"Read Less"
+            const toggleLink = container.querySelector('[data-bs-toggle="collapse"]');
+            if (toggleLink) {
+                const collapseElementId = toggleLink.getAttribute('href').slice(1); // Remove the '#' from href
+                const collapseElement = document.getElementById(collapseElementId);
+    
+                collapseElement.addEventListener('show.bs.collapse', function() {
+                    toggleLink.textContent = 'Read Less';
+                });
+            
+                collapseElement.addEventListener('hide.bs.collapse', function() {
+                    toggleLink.textContent = 'Read More';
+                });
+            }
+        } else {
+            console.error('Container is null');  // Debugging line
+        }
+    }
+    
+       
+    // This part is for the document ready function at the end of your script
+    document.addEventListener('DOMContentLoaded', function() {
+        const requestTypeDropdown = document.getElementById('id_request_type');
+        console.log('requestTypeDropdown:', requestTypeDropdown);  // Debugging line
+        if (requestTypeDropdown) {
+            requestTypeDropdown.addEventListener('change', fetchAuthorizationForm);
+        } else {
+            console.error('requestTypeDropdown is null');  // Debugging line
+        }
+
+        const authorizationFormContainer = document.getElementById('authorizationFormContainer');
+        attachEventListeners(authorizationFormContainer);
+
+        const items = document.querySelectorAll('.item');
+        if (items.length === 0) {
+            console.error('No .item elements found');  // Debugging line
+        }
+
+        items.forEach(item => {
+            item.addEventListener('click', function(event) {
+                toggleCategory(event.currentTarget);
+            });
+        });
+    });
+
+    
+    // Initialize Owl Carousel with responsive settings
+    $(document).ready(function(){
+        $(".owl-features").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+    });
+
+
+</script>
+{% endblock %}

@@ -1,11 +1,14 @@
-{% extends 'core/base.html' %}
+{% extends 'core/new_base.html' %}
+{% load i18n %}
 
 
 {% block content %}
+<div class="main-banner" id="top">
   <h2>Onboarding Step 1</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
   </form>
+</div>
 {% endblock %}

@@ -1,0 +1,399 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VERSION DU PAQUET\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-02 00:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: NOM COMPLET <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: core/templates/core/index.html:15
+msgid "WELCOME TO DATA RIGHTS AUTOMATION IN LUXEMBOURG"
+msgstr "BIENVENUE DANS L'AUTOMATISATION DES DROITS DE DONNÉES AU LUXEMBOURG"
+
+#: core/templates/core/index.html:17
+msgid "Take Command of Your"
+msgstr "Prenez le Contrôle de Votre"
+
+#: core/templates/core/index.html:17
+msgid "Digital Self"
+msgstr "Moi Numérique"
+
+#: core/templates/core/index.html:17
+msgid "Today!"
+msgstr "Aujourd'hui !"
+
+#: core/templates/core/index.html:18
+msgid ""
+"Imagine a digital world where you’re in full control of your personal data. "
+"That’s what we offer. With Automate Your Data Rights in Luxembourg, we "
+"introduce you to the next level of data management. Don't let your "
+"information float aimlessly in the vast digital ocean. Equip yourself with "
+"our tool to retrieve, correct, delete, and port your data seamlessly. Why "
+"wait? Dive in, and shield yourself from identity theft, spam, data leaks, "
+"and much more!"
+msgstr ""
+"Imaginez un monde numérique où vous avez le plein contrôle de vos données "
+"personnelles. C'est ce que nous offrons. Avec Automatisez Vos Droits de "
+"Données au Luxembourg, nous vous introduisons au niveau supérieur de la "
+"gestion des données. Ne laissez pas vos informations flotter sans but dans "
+"le vaste océan numérique. Équipez-vous de notre outil pour récupérer, "
+"corriger, supprimer et transférer vos données de manière transparente. "
+"Pourquoi attendre ? Plongez et protégez-vous contre le vol d'identité, le "
+"spam, les fuites de données, et bien plus encore !"
+
+#: core/templates/core/index.html:19
+msgid "Discover How It Works"
+msgstr "Découvrez Comment Ça Marche"
+
+#: core/templates/core/index.html:20
+msgid "or"
+msgstr "ou"
+
+#: core/templates/core/index.html:21
+msgid "Got Questions? See FAQs"
+msgstr "Des Questions ? Consultez la FAQ"
+
+#: core/templates/core/index.html:30
+msgid "Create Your Account"
+msgstr "Créez Votre Compte"
+
+#: core/templates/core/index.html:31
+msgid "Join us and take control of your digital identity."
+msgstr "Rejoignez-nous et prenez le contrôle de votre identité numérique."
+
+#: core/templates/core/index.html:38
+msgid "Email Address"
+msgstr "Adresse E-mail"
+
+#: core/templates/core/index.html:39
+msgid "you@example.com"
+msgstr "vous@exemple.com"
+
+#: core/templates/core/index.html:48
+msgid "Choose a Password"
+msgstr "Choisissez un Mot de Passe"
+
+#: core/templates/core/index.html:49
+msgid "At least 8 characters"
+msgstr "Au moins 8 caractères"
+
+#: core/templates/core/index.html:58
+msgid "Confirm Your Password"
+msgstr "Confirmez Votre Mot de Passe"
+
+#: core/templates/core/index.html:59
+msgid "Repeat the password"
+msgstr "Répétez le mot de passe"
+
+#: core/templates/core/index.html:67
+msgid "Join Now"
+msgstr "Rejoignez-Nous Maintenant"
+
+#: core/templates/core/index.html:86
+msgid "We Empower You With"
+msgstr "Nous Vous Donnons le Pouvoir Avec"
+
+#: core/templates/core/index.html:86
+#, fuzzy
+#| msgid "AutoRight - Data Rights Automation Platform"
+msgid "One-Click Automation"
+msgstr "AutoRight - Plateforme d'Automatisation des Droits de Données"
+
+#: core/templates/core/index.html:87
+msgid "Protection"
+msgstr "Protection"
+
+#: core/templates/core/index.html:87
+msgid "For Your Data Rights"
+msgstr "Pour Vos Droits sur les Données"
+
+#: core/templates/core/index.html:89
+msgid ""
+"Take control of your digital identity by simplifying and automating "
+"processes related to personal data management in Luxembourg."
+msgstr ""
+"Prenez le contrôle de votre identité numérique en simplifiant et en "
+"automatisant les processus liés à la gestion des données personnelles au "
+"Luxembourg."
+
+#: core/templates/core/index.html:95
+msgid "data retrieval"
+msgstr "récupération des données"
+
+#: core/templates/core/index.html:97 core/templates/core/index.html:154
+#, fuzzy
+#| msgid "AutoRight - Data Rights Automation Platform"
+msgid "One-Click Data Retrieval"
+msgstr "AutoRight - Plateforme d'Automatisation des Droits de Données"
+
+#: core/templates/core/index.html:98
+msgid "Simplify the complex process of data retrieval from various platforms."
+msgstr ""
+"Simplifiez le processus complexe de récupération des données à partir de "
+"diverses plateformes."
+
+#: core/templates/core/index.html:104
+msgid "data deletion"
+msgstr "suppression des données"
+
+#: core/templates/core/index.html:106
+msgid "Automate Data Deletion"
+msgstr "Automatiser la Suppression des Données"
+
+#: core/templates/core/index.html:107
+msgid ""
+"Schedule and manage data deletion from databases you no longer want to "
+"associate with."
+msgstr ""
+"Planifiez et gérez la suppression des données des bases de données avec "
+"lesquelles vous ne souhaitez plus être associé."
+
+#: core/templates/core/index.html:113
+msgid "data corrections"
+msgstr "corrections de données"
+
+#: core/templates/core/index.html:115 core/templates/core/index.html:168
+msgid "Automate Data Corrections"
+msgstr "Automatiser les Corrections de Données"
+
+#: core/templates/core/index.html:116
+msgid ""
+"Easily correct any inaccurate data points about you across various platforms."
+msgstr ""
+"Corrigez facilement tout point de données inexact vous concernant sur "
+"diverses plateformes."
+
+#: core/templates/core/index.html:122
+msgid "data portability"
+msgstr "portabilité des données"
+
+#: core/templates/core/index.html:124
+msgid "Automate Data Portability"
+msgstr "Automatiser la Portabilité des Données"
+
+#: core/templates/core/index.html:125
+msgid ""
+"Transfer your data effortlessly between different services, making it work "
+"for you."
+msgstr ""
+"Transférez vos données sans effort entre différents services, en les mettant "
+"à votre service."
+
+#: core/templates/core/index.html:140
+msgid "Explore Our"
+msgstr "Explorez Nos"
+
+#: core/templates/core/index.html:140
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: core/templates/core/index.html:140
+msgid "Modules"
+msgstr "Modules"
+
+#: core/templates/core/index.html:142
+msgid ""
+"Our application offers features to ensure optimal data rights management for "
+"individuals & Companies"
+msgstr ""
+"Notre application offre des fonctionnalités pour assurer une gestion "
+"optimale des droits de données pour les individus et les entreprises."
+
+#: core/templates/core/index.html:152
+msgid "Data Retrieval Module"
+msgstr "Module de Récupération des Données"
+
+#: core/templates/core/index.html:159
+#, fuzzy
+#| msgid "AutoRight - Data Rights Automation Platform"
+msgid "Data Deletion Automation"
+msgstr "AutoRight - Plateforme d'Automatisation des Droits de Données"
+
+#: core/templates/core/index.html:161
+msgid "Automated Data Deletion"
+msgstr "Suppression Automatisée des Données"
+
+#: core/templates/core/index.html:166
+msgid "Data Correction System"
+msgstr "Système de Correction des Données"
+
+#: core/templates/core/index.html:173 core/templates/core/index.html:175
+msgid "Effortless Data Portability"
+msgstr "Portabilité des Données sans Effort"
+
+#: core/templates/core/index.html:180
+msgid "Risk Prevention Dashboard"
+msgstr "Tableau de Bord de Prévention des Risques"
+
+#: core/templates/core/index.html:182
+msgid "Risk Prevention"
+msgstr "Prévention des Risques"
+
+#: core/templates/core/index.html:187 core/templates/core/index.html:189
+msgid "User-Friendly Interface"
+msgstr "Interface Conviviale"
+
+#: core/templates/core/index.html:213
+msgid "Empowering You to"
+msgstr "Vous Donnant le Pouvoir de"
+
+#: core/templates/core/index.html:213
+msgid "Take Control"
+msgstr "Prendre le Contrôle"
+
+#: core/templates/core/index.html:213
+msgid "of Your"
+msgstr "de Votre"
+
+#: core/templates/core/index.html:213
+msgid "Digital Identity"
+msgstr "Identité Numérique"
+
+#: core/templates/core/index.html:215
+msgid ""
+"Our cutting-edge Django application is designed to simplify and automate the "
+"management of your personal data rights. Ensure your digital safety in a "
+"world with increasing risks associated with data privacy."
+msgstr ""
+"Notre application Django à la pointe de la technologie est conçue pour "
+"simplifier et automatiser la gestion de vos droits de données personnelles. "
+"Assurez votre sécurité numérique dans un monde où les risques associés à la "
+"confidentialité des données sont de plus en plus grands."
+
+#: core/templates/core/index.html:220
+msgid "Data Retrieval"
+msgstr "Récupération des Données"
+
+#: core/templates/core/index.html:225
+msgid "Data Deletion"
+msgstr "Suppression des Données"
+
+#: core/templates/core/index.html:230
+msgid "Data Corrections"
+msgstr "Corrections des Données"
+
+#: core/templates/core/index.html:234
+msgid ""
+"With features like One-Click Automation, Risk Prevention, and Data "
+"Portability, our application ensures you have complete control over your "
+"data across various platforms, giving you peace of mind in an interconnected "
+"digital landscape."
+msgstr ""
+"Avec des fonctionnalités telles que l'Automatisation en Un Clic, la "
+"Prévention des Risques et la Portabilité des Données, notre application vous "
+"assure un contrôle total sur vos données à travers diverses plateformes, "
+"vous offrant la tranquillité d'esprit dans un paysage numérique "
+"interconnecté."
+
+#: core/templates/core/index.html:259
+msgid "Contact Us"
+msgstr "Contactez-Nous"
+
+#: core/templates/core/index.html:259
+msgid "Get In"
+msgstr "Entrer en"
+
+#: core/templates/core/index.html:259
+msgid "Touch"
+msgstr "Contact"
+
+#: core/templates/core/index.html:264
+msgid "Your Name..."
+msgstr "Votre Prénom..."
+
+#: core/templates/core/index.html:269
+msgid "Your Surname..."
+msgstr "Votre Nom..."
+
+#: core/templates/core/index.html:274
+msgid "Your E-mail..."
+msgstr "Votre E-mail..."
+
+#: core/templates/core/index.html:279
+msgid "Subject..."
+msgstr "Sujet..."
+
+#: core/templates/core/index.html:284
+msgid "Your Message"
+msgstr "Votre Message"
+
+#: core/templates/core/index.html:289
+msgid "Send Message Now"
+msgstr "Envoyer le Message Maintenant"
+
+#: core/templates/core/new_base.html:10
+msgid "AutoRight - Data Rights Automation Platform"
+msgstr "AutoRight - Plateforme d'Automatisation des Droits de Données"
+
+#: core/templates/core/new_base.html:83
+msgid "Services"
+msgstr "Services"
+
+#: core/templates/core/new_base.html:84
+msgid "Projects"
+msgstr "Projets"
+
+#: core/templates/core/new_base.html:85
+msgid "Infos"
+msgstr "Infos"
+
+#: core/templates/core/new_base.html:87
+msgid "Automate"
+msgstr "Automatiser"
+
+#: core/templates/core/new_base.html:88
+msgid "Requests"
+msgstr "Demandes"
+
+#: core/templates/core/new_base.html:92
+msgid "User"
+msgstr "Utilisateur"
+
+#: core/templates/core/new_base.html:95
+msgid "Login"
+msgstr "Connexion"
+
+#: core/templates/core/new_base.html:97
+msgid "View Companies by Category"
+msgstr "Voir les Entreprises par Catégorie"
+
+#: core/templates/core/new_base.html:98
+msgid "Profile"
+msgstr "Profil"
+
+#: core/templates/core/new_base.html:99
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: user_management/onboarding_middleware.py:18
+msgid "Redirecting to step 1"
+msgstr ""
+
+#: user_management/onboarding_middleware.py:21
+msgid "Redirecting to step 2"
+msgstr ""
+
+#: user_management/onboarding_middleware.py:24
+msgid "Redirecting to step 3"
+msgstr ""
+
+#: user_management/views.py:117
+msgid "Welcome to step 2!"
+msgstr ""
+
+#, fuzzy
+#~| msgid "AutoRight - Data Rights Automation Platform"
+#~ msgid "One-Click Data Rights Automation"
+#~ msgstr "AutoRight - Plateforme d'Automatisation des Droits de Données"
