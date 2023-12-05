@@ -134,7 +134,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale',  # Assuming your locale files will be in the "locale" directory of your project
+    os.path.join(BASE_DIR / 'locale'),  # Assuming your locale files will be in the "locale" directory of your project
 ]
 
 # Internationalization

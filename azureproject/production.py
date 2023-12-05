@@ -15,6 +15,9 @@ MIDDLEWARE = [
     # Add whitenoise middleware after the security middleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # add locale
+    'django.middleware.locale.LocaleMiddleware',
+    # add locale
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -25,11 +28,11 @@ MIDDLEWARE = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/'),
 ]
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR / 'locale'),  # Assuming your locale files will be in the "locale" directory of your project
+    os.path.join(BASE_DIR / 'locale/'),  # Assuming your locale files will be in the "locale" directory of your project
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
