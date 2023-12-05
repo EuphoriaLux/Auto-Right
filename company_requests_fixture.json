@@ -1,3 +1,701 @@
-Loading environment variables for .env file
-azureproject.settings
-[{"model": "company_requests.risk", "pk": 91, "fields": {"name": "Affected Credit Rating", "description": "Risk of having an inaccurate credit score.", "icon": "fas fa-chart-line", "category": 2}}, {"model": "company_requests.risk", "pk": 92, "fields": {"name": "Blackmail", "description": "Risk of personal information being used for extortion.", "icon": "fas fa-envelope-open-text", "category": 7}}, {"model": "company_requests.risk", "pk": 93, "fields": {"name": "Career Sabotage", "description": "Risk of personal and professional information being misused.", "icon": "fas fa-user-slash", "category": 7}}, {"model": "company_requests.risk", "pk": 94, "fields": {"name": "Civil Liberties", "description": "Risk of infringement on personal freedoms and rights.", "icon": "fas fa-balance-scale", "category": 4}}, {"model": "company_requests.risk", "pk": 95, "fields": {"name": "Cultural Profiling", "description": "Risk of being profiled based on cultural or ethnic background.", "icon": "fas fa-globe-americas", "category": 5}}, {"model": "company_requests.risk", "pk": 96, "fields": {"name": "Cyberbullying", "description": "Risk of online harassment and bullying.", "icon": "fas fa-comments", "category": 8}}, {"model": "company_requests.risk", "pk": 97, "fields": {"name": "Data Leaks", "description": "Risk of unauthorized exposure of personal data.", "icon": "fas fa-unlock", "category": 9}}, {"model": "company_requests.risk", "pk": 98, "fields": {"name": "Discrimination", "description": "Risk of unfair treatment based on personal data.", "icon": "fas fa-handshake-slash", "category": 8}}, {"model": "company_requests.risk", "pk": 99, "fields": {"name": "Educational Fraud", "description": "Risk of academic records being falsified or misused.", "icon": "fas fa-graduation-cap", "category": 4}}, {"model": "company_requests.risk", "pk": 100, "fields": {"name": "Emotional Exploitation", "description": "Risk of personal data being used to manipulate emotions.", "icon": "fas fa-heart-broken", "category": 8}}, {"model": "company_requests.risk", "pk": 101, "fields": {"name": "Financial Fraud", "description": "Risk of financial data being used for fraudulent activities.", "icon": "fas fa-money-bill-wave", "category": 2}}, {"model": "company_requests.risk", "pk": 102, "fields": {"name": "Healthcare Fraud", "description": "Risk of medical records being used for fraud.", "icon": "fas fa-notes-medical", "category": 6}}, {"model": "company_requests.risk", "pk": 103, "fields": {"name": "Identity Theft", "description": "Risk of personal information being used to impersonate you.", "icon": "fas fa-user-shield", "category": 2}}, {"model": "company_requests.risk", "pk": 104, "fields": {"name": "Invasion of Privacy", "description": "Risk of unauthorized access to personal life details.", "icon": "fas fa-eye-slash", "category": 7}}, {"model": "company_requests.risk", "pk": 105, "fields": {"name": "Investment Risks", "description": "Risk of financial data being used to manipulate market investments.", "icon": "fas fa-chart-pie", "category": 3}}, {"model": "company_requests.risk", "pk": 106, "fields": {"name": "Location Tracking", "description": "Risk of movements being tracked through data.", "icon": "fas fa-map-marker-alt", "category": 7}}, {"model": "company_requests.risk", "pk": 107, "fields": {"name": "Medical Identity Theft", "description": "Risk of medical data being used to impersonate you for healthcare services.", "icon": "fas fa-hospital-symbol", "category": 6}}, {"model": "company_requests.risk", "pk": 108, "fields": {"name": "Misdiagnosis Risks", "description": "Risk of incorrect medical treatment due to wrong data.", "icon": "fas fa-x-ray", "category": 6}}, {"model": "company_requests.risk", "pk": 109, "fields": {"name": "Political Manipulation", "description": "Risk of data being used to influence political views.", "icon": "fas fa-vote-yea", "category": 4}}, {"model": "company_requests.risk", "pk": 110, "fields": {"name": "Price Discrimination", "description": "Risk of being charged unfairly based on consumer data.", "icon": "fas fa-tag", "category": 5}}, {"model": "company_requests.risk", "pk": 111, "fields": {"name": "Product Scams", "description": "Risk of being targeted for fraudulent products.", "icon": "fas fa-exclamation-triangle", "category": 2}}, {"model": "company_requests.risk", "pk": 112, "fields": {"name": "Selective Enforcement", "description": "Risk of being unfairly targeted by law enforcement.", "icon": "fas fa-gavel", "category": 4}}, {"model": "company_requests.risk", "pk": 113, "fields": {"name": "Social Engineering", "description": "Risk of data being used to manipulate or deceive.", "icon": "fas fa-brain", "category": 4}}, {"model": "company_requests.risk", "pk": 114, "fields": {"name": "Spam Mail and Calls", "description": "Risk of contact information being used for spam.", "icon": "fas fa-envelope", "category": 4}}, {"model": "company_requests.risk", "pk": 115, "fields": {"name": "Stalking", "description": "Risk of personal information being used to stalk.", "icon": "fas fa-binoculars", "category": 4}}, {"model": "company_requests.risk", "pk": 116, "fields": {"name": "Targeted Advertising", "description": "Risk of data being used to serve intrusive ads.", "icon": "fas fa-bullseye", "category": 3}}, {"model": "company_requests.risk", "pk": 117, "fields": {"name": "Travel Scams", "description": "Risk of travel information being used for fraudulent schemes.", "icon": "fas fa-plane-slash", "category": 2}}, {"model": "company_requests.risk", "pk": 118, "fields": {"name": "Unauthorized Data Sharing", "description": "Risk of data being shared without consent.", "icon": "fas fa-share-alt-square", "category": 1}}, {"model": "company_requests.risk", "pk": 119, "fields": {"name": "Unauthorized Transactions", "description": "Risk of financial data being used for unauthorized transactions.", "icon": "fas fa-credit-card", "category": 1}}, {"model": "company_requests.categoryrisk", "pk": 1, "fields": {"name": "Security Risks", "description": null, "icon_color": "#424242"}}, {"model": "company_requests.categoryrisk", "pk": 2, "fields": {"name": "Fraud Risks", "description": null, "icon_color": "#f44336"}}, {"model": "company_requests.categoryrisk", "pk": 3, "fields": {"name": "Commercial Risks", "description": null, "icon_color": "#1e88e5"}}, {"model": "company_requests.categoryrisk", "pk": 4, "fields": {"name": "Others", "description": null, "icon_color": "#b0bec5"}}, {"model": "company_requests.categoryrisk", "pk": 5, "fields": {"name": "Social Risks", "description": null, "icon_color": "#ffa726"}}, {"model": "company_requests.categoryrisk", "pk": 6, "fields": {"name": "Health Risks", "description": null, "icon_color": "#ab47bc"}}, {"model": "company_requests.categoryrisk", "pk": 7, "fields": {"name": "Privacy Risks", "description": null, "icon_color": "#4caf50"}}, {"model": "company_requests.categoryrisk", "pk": 8, "fields": {"name": "Psychological Risks", "description": null, "icon_color": "#e57373"}}, {"model": "company_requests.categoryrisk", "pk": 9, "fields": {"name": "Data Risks", "description": null, "icon_color": "#3498db"}}, {"model": "company_requests.category", "pk": 1, "fields": {"name": "Telecom", "description": "Telecom companies store not just your contact information but also metadata about your calls, messages, and internet usage.", "risk": [103, 104, 106, 114]}}, {"model": "company_requests.category", "pk": 2, "fields": {"name": "Human Ressource", "description": "Employers and HR departments hold various types of personal and sensitive data ranging from contact details to employment history.", "risk": [91, 98, 103, 104]}}, {"model": "company_requests.category", "pk": 3, "fields": {"name": "Governement", "description": "Government and institutions store a vast array of personal and sensitive data, ranging from your identification and tax records to health and social benefits information", "risk": [94, 103, 112, 118]}}, {"model": "company_requests.category", "pk": 4, "fields": {"name": "Dating", "description": "Dating platforms collect a lot of personal information, from your location to your personal preferences.", "risk": [92, 100, 103, 115]}}, {"model": "company_requests.companygroup", "pk": 1, "fields": {"name": "Proximus S.A", "description": "", "category": 1, "created_at": "2023-09-11T14:33:39.306Z", "updated_at": "2023-09-11T14:33:39.306Z"}}, {"model": "company_requests.companygroup", "pk": 2, "fields": {"name": "Post Group", "description": "", "category": 1, "created_at": "2023-09-11T14:52:06.529Z", "updated_at": "2023-09-11T14:52:06.529Z"}}, {"model": "company_requests.companygroup", "pk": 3, "fields": {"name": "Orange Group", "description": "", "category": 1, "created_at": "2023-09-11T14:52:47.307Z", "updated_at": "2023-09-11T14:52:47.307Z"}}, {"model": "company_requests.companygroup", "pk": 4, "fields": {"name": "Stepstone Group", "description": "", "category": 2, "created_at": "2023-09-11T14:54:20.945Z", "updated_at": "2023-09-11T14:54:20.945Z"}}, {"model": "company_requests.companygroup", "pk": 5, "fields": {"name": "Luxembourg Online", "description": "", "category": 1, "created_at": "2023-09-11T20:10:48.621Z", "updated_at": "2023-09-11T20:10:48.621Z"}}, {"model": "company_requests.companygroup", "pk": 6, "fields": {"name": "Europa Plurimedia Synergie S.A.", "description": "", "category": 2, "created_at": "2023-09-11T21:00:38.848Z", "updated_at": "2023-09-11T21:00:38.848Z"}}, {"model": "company_requests.companygroup", "pk": 7, "fields": {"name": "HR Communication S.A.", "description": "", "category": 2, "created_at": "2023-09-11T21:02:59.270Z", "updated_at": "2023-09-11T21:02:59.270Z"}}, {"model": "company_requests.companygroup", "pk": 8, "fields": {"name": "Ministères", "description": "", "category": 3, "created_at": "2023-09-11T21:06:14.117Z", "updated_at": "2023-09-14T12:06:51.968Z"}}, {"model": "company_requests.company", "pk": 1, "fields": {"legal_name": "Proximus S.A", "commercial_name": "Tango", "address": "10 rue des bons malades", "company_number": "800 777 77", "email": "dpo@tango.lu", "created_at": "2023-09-11T14:33:40.705Z", "updated_at": "2023-09-11T14:52:22.663Z", "groups": [1]}}, {"model": "company_requests.company", "pk": 2, "fields": {"legal_name": "Post Telecom S.A", "commercial_name": "Post", "address": "1 rue des bians", "company_number": "8002 8004", "email": "privacy@post.lu", "created_at": "2023-09-11T14:52:08.515Z", "updated_at": "2023-09-11T14:52:08.515Z", "groups": [2]}}, {"model": "company_requests.company", "pk": 3, "fields": {"legal_name": "Orange S.A", "commercial_name": "Orange", "address": "ORANGE LUXEMBOURG, DPO, 8 rue des\r\nMérovingiens à 8070 Bertrange, Grand-Duché de Luxembourg", "company_number": "80000", "email": "data.protection@orangeluxembourg.lu", "created_at": "2023-09-11T14:52:55.705Z", "updated_at": "2023-09-11T20:09:33.397Z", "groups": [3]}}, {"model": "company_requests.company", "pk": 4, "fields": {"legal_name": "Stepstone S.A", "commercial_name": "Jobs.lu", "address": "Branch office of jobs.lu Limited,\r\n\r\n5 rue des Mérovingiens, L-8070 Bertrange", "company_number": "27 99 27 98", "email": "datenschutz@jobs.lu", "created_at": "2023-09-11T14:54:22.017Z", "updated_at": "2023-09-11T20:58:59.510Z", "groups": [4]}}, {"model": "company_requests.company", "pk": 5, "fields": {"legal_name": "Luxembourg Online", "commercial_name": "LOL (Luxembourg Online)", "address": "14, avenue du X Septembre\r\nL-2550 Luxembourg", "company_number": "n/a", "email": "legal@online.lu", "created_at": "2023-09-11T20:10:49.995Z", "updated_at": "2023-09-11T20:10:49.995Z", "groups": [5]}}, {"model": "company_requests.company", "pk": 6, "fields": {"legal_name": "Europa Plurimedia Synergie S.A.", "commercial_name": "Moovijob", "address": "24-28 Rue Goethe,\r\nL-1637 Luxembourg", "company_number": "24 87 37 80", "email": "dataprotection@moovijob.com", "created_at": "2023-09-11T21:00:40.639Z", "updated_at": "2023-09-11T21:00:40.639Z", "groups": [6]}}, {"model": "company_requests.company", "pk": 7, "fields": {"legal_name": "HR Communication S.A.", "commercial_name": "Jobfinder.lu", "address": "L-4440 Soleuvre, 125A, rue d'Esch", "company_number": "26 59 80", "email": "dpo@hrc.lu", "created_at": "2023-09-11T21:02:34.236Z", "updated_at": "2023-09-11T21:03:06.096Z", "groups": [7]}}, {"model": "company_requests.company", "pk": 8, "fields": {"legal_name": "Ministère de la Santé", "commercial_name": "Ministère de la Santé", "address": "1, rue Charles Darwin\r\nL - 1433 Luxembourg", "company_number": "75512", "email": "aurelia.schwander@ms.etat.lu", "created_at": "2023-09-11T21:06:15.234Z", "updated_at": "2023-09-11T22:32:59.265Z", "groups": [8]}}, {"model": "company_requests.company", "pk": 9, "fields": {"legal_name": "Ministère de l'Économie", "commercial_name": "Ministère de l'Économie", "address": "19-21, boulevard Royal\r\nL-2449 Luxembourg\r\nLuxembourg", "company_number": "247-84137", "email": "dataprotection@sip.etat.lu", "created_at": "2023-09-11T21:12:07.079Z", "updated_at": "2023-09-11T22:32:55.514Z", "groups": [8]}}, {"model": "company_requests.authorizationscope", "pk": 1, "fields": {"name": "Telecom [Suppression]", "description": "test", "request_type": "data_suppression", "category": 1}}, {"model": "company_requests.authorizationscope", "pk": 2, "fields": {"name": "Human Ressource", "description": "fdghdhgf", "request_type": "data_suppression", "category": 2}}, {"model": "company_requests.authorizationscope", "pk": 3, "fields": {"name": "Governement", "description": "Gouvernement Test", "request_type": "data_suppression", "category": 3}}, {"model": "company_requests.authorizationscope", "pk": 5, "fields": {"name": "Dating [Suppression]", "description": "test", "request_type": "data_suppression", "category": 4}}]
+[
+    {
+        "model": "company_requests.risk",
+        "pk": 91,
+        "fields": {
+            "name": "Affected Credit Rating",
+            "description": "Risk of having an inaccurate credit score.",
+            "icon": "fas fa-chart-line",
+            "category": 2
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 92,
+        "fields": {
+            "name": "Blackmail",
+            "description": "Risk of personal information being used for extortion.",
+            "icon": "fas fa-envelope-open-text",
+            "category": 7
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 93,
+        "fields": {
+            "name": "Career Sabotage",
+            "description": "Risk of personal and professional information being misused.",
+            "icon": "fas fa-user-slash",
+            "category": 7
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 94,
+        "fields": {
+            "name": "Civil Liberties",
+            "description": "Risk of infringement on personal freedoms and rights.",
+            "icon": "fas fa-balance-scale",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 95,
+        "fields": {
+            "name": "Cultural Profiling",
+            "description": "Risk of being profiled based on cultural or ethnic background.",
+            "icon": "fas fa-globe-americas",
+            "category": 5
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 96,
+        "fields": {
+            "name": "Cyberbullying",
+            "description": "Risk of online harassment and bullying.",
+            "icon": "fas fa-comments",
+            "category": 8
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 97,
+        "fields": {
+            "name": "Data Leaks",
+            "description": "Risk of unauthorized exposure of personal data.",
+            "icon": "fas fa-unlock",
+            "category": 9
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 98,
+        "fields": {
+            "name": "Discrimination",
+            "description": "Risk of unfair treatment based on personal data.",
+            "icon": "fas fa-handshake-slash",
+            "category": 8
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 99,
+        "fields": {
+            "name": "Educational Fraud",
+            "description": "Risk of academic records being falsified or misused.",
+            "icon": "fas fa-graduation-cap",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 100,
+        "fields": {
+            "name": "Emotional Exploitation",
+            "description": "Risk of personal data being used to manipulate emotions.",
+            "icon": "fas fa-heart-broken",
+            "category": 8
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 101,
+        "fields": {
+            "name": "Financial Fraud",
+            "description": "Risk of financial data being used for fraudulent activities.",
+            "icon": "fas fa-money-bill-wave",
+            "category": 2
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 102,
+        "fields": {
+            "name": "Healthcare Fraud",
+            "description": "Risk of medical records being used for fraud.",
+            "icon": "fas fa-notes-medical",
+            "category": 6
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 103,
+        "fields": {
+            "name": "Identity Theft",
+            "description": "Risk of personal information being used to impersonate you.",
+            "icon": "fas fa-user-shield",
+            "category": 2
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 104,
+        "fields": {
+            "name": "Invasion of Privacy",
+            "description": "Risk of unauthorized access to personal life details.",
+            "icon": "fas fa-eye-slash",
+            "category": 7
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 105,
+        "fields": {
+            "name": "Investment Risks",
+            "description": "Risk of financial data being used to manipulate market investments.",
+            "icon": "fas fa-chart-pie",
+            "category": 3
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 106,
+        "fields": {
+            "name": "Location Tracking",
+            "description": "Risk of movements being tracked through data.",
+            "icon": "fas fa-map-marker-alt",
+            "category": 7
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 107,
+        "fields": {
+            "name": "Medical Identity Theft",
+            "description": "Risk of medical data being used to impersonate you for healthcare services.",
+            "icon": "fas fa-hospital-symbol",
+            "category": 6
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 108,
+        "fields": {
+            "name": "Misdiagnosis Risks",
+            "description": "Risk of incorrect medical treatment due to wrong data.",
+            "icon": "fas fa-x-ray",
+            "category": 6
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 109,
+        "fields": {
+            "name": "Political Manipulation",
+            "description": "Risk of data being used to influence political views.",
+            "icon": "fas fa-vote-yea",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 110,
+        "fields": {
+            "name": "Price Discrimination",
+            "description": "Risk of being charged unfairly based on consumer data.",
+            "icon": "fas fa-tag",
+            "category": 5
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 111,
+        "fields": {
+            "name": "Product Scams",
+            "description": "Risk of being targeted for fraudulent products.",
+            "icon": "fas fa-exclamation-triangle",
+            "category": 2
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 112,
+        "fields": {
+            "name": "Selective Enforcement",
+            "description": "Risk of being unfairly targeted by law enforcement.",
+            "icon": "fas fa-gavel",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 113,
+        "fields": {
+            "name": "Social Engineering",
+            "description": "Risk of data being used to manipulate or deceive.",
+            "icon": "fas fa-brain",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 114,
+        "fields": {
+            "name": "Spam Mail and Calls",
+            "description": "Risk of contact information being used for spam.",
+            "icon": "fas fa-envelope",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 115,
+        "fields": {
+            "name": "Stalking",
+            "description": "Risk of personal information being used to stalk.",
+            "icon": "fas fa-binoculars",
+            "category": 4
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 116,
+        "fields": {
+            "name": "Targeted Advertising",
+            "description": "Risk of data being used to serve intrusive ads.",
+            "icon": "fas fa-bullseye",
+            "category": 3
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 117,
+        "fields": {
+            "name": "Travel Scams",
+            "description": "Risk of travel information being used for fraudulent schemes.",
+            "icon": "fas fa-plane-slash",
+            "category": 2
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 118,
+        "fields": {
+            "name": "Unauthorized Data Sharing",
+            "description": "Risk of data being shared without consent.",
+            "icon": "fas fa-share-alt-square",
+            "category": 1
+        }
+    },
+    {
+        "model": "company_requests.risk",
+        "pk": 119,
+        "fields": {
+            "name": "Unauthorized Transactions",
+            "description": "Risk of financial data being used for unauthorized transactions.",
+            "icon": "fas fa-credit-card",
+            "category": 1
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 1,
+        "fields": {
+            "name": "Security Risks",
+            "description": null,
+            "icon_color": "#424242"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 2,
+        "fields": {
+            "name": "Fraud Risks",
+            "description": null,
+            "icon_color": "#f44336"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 3,
+        "fields": {
+            "name": "Commercial Risks",
+            "description": null,
+            "icon_color": "#1e88e5"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 4,
+        "fields": {
+            "name": "Others",
+            "description": null,
+            "icon_color": "#b0bec5"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 5,
+        "fields": {
+            "name": "Social Risks",
+            "description": null,
+            "icon_color": "#ffa726"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 6,
+        "fields": {
+            "name": "Health Risks",
+            "description": null,
+            "icon_color": "#ab47bc"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 7,
+        "fields": {
+            "name": "Privacy Risks",
+            "description": null,
+            "icon_color": "#4caf50"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 8,
+        "fields": {
+            "name": "Psychological Risks",
+            "description": null,
+            "icon_color": "#e57373"
+        }
+    },
+    {
+        "model": "company_requests.categoryrisk",
+        "pk": 9,
+        "fields": {
+            "name": "Data Risks",
+            "description": null,
+            "icon_color": "#3498db"
+        }
+    },
+    {
+        "model": "company_requests.category",
+        "pk": 1,
+        "fields": {
+            "name": "Telecom",
+            "description": "Telecom companies store not just your contact information but also metadata about your calls, messages, and internet usage.",
+            "risk": [
+                103,
+                104,
+                106,
+                114
+            ]
+        }
+    },
+    {
+        "model": "company_requests.category",
+        "pk": 2,
+        "fields": {
+            "name": "Human Ressource",
+            "description": "Employers and HR departments hold various types of personal and sensitive data ranging from contact details to employment history.",
+            "risk": [
+                91,
+                98,
+                103,
+                104
+            ]
+        }
+    },
+    {
+        "model": "company_requests.category",
+        "pk": 3,
+        "fields": {
+            "name": "Governement",
+            "description": "Government and institutions store a vast array of personal and sensitive data, ranging from your identification and tax records to health and social benefits information",
+            "risk": [
+                94,
+                103,
+                112,
+                118
+            ]
+        }
+    },
+    {
+        "model": "company_requests.category",
+        "pk": 4,
+        "fields": {
+            "name": "Dating",
+            "description": "Dating platforms collect a lot of personal information, from your location to your personal preferences.",
+            "risk": [
+                92,
+                100,
+                103,
+                115
+            ]
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 1,
+        "fields": {
+            "name": "Proximus S.A",
+            "description": "",
+            "category": 1,
+            "created_at": "2023-09-11T14:33:39.306Z",
+            "updated_at": "2023-09-11T14:33:39.306Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 2,
+        "fields": {
+            "name": "Post Group",
+            "description": "",
+            "category": 1,
+            "created_at": "2023-09-11T14:52:06.529Z",
+            "updated_at": "2023-09-11T14:52:06.529Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 3,
+        "fields": {
+            "name": "Orange Group",
+            "description": "",
+            "category": 1,
+            "created_at": "2023-09-11T14:52:47.307Z",
+            "updated_at": "2023-09-11T14:52:47.307Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 4,
+        "fields": {
+            "name": "Stepstone Group",
+            "description": "",
+            "category": 2,
+            "created_at": "2023-09-11T14:54:20.945Z",
+            "updated_at": "2023-09-11T14:54:20.945Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 5,
+        "fields": {
+            "name": "Luxembourg Online",
+            "description": "",
+            "category": 1,
+            "created_at": "2023-09-11T20:10:48.621Z",
+            "updated_at": "2023-09-11T20:10:48.621Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 6,
+        "fields": {
+            "name": "Europa Plurimedia Synergie S.A.",
+            "description": "",
+            "category": 2,
+            "created_at": "2023-09-11T21:00:38.848Z",
+            "updated_at": "2023-09-11T21:00:38.848Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 7,
+        "fields": {
+            "name": "HR Communication S.A.",
+            "description": "",
+            "category": 2,
+            "created_at": "2023-09-11T21:02:59.270Z",
+            "updated_at": "2023-09-11T21:02:59.270Z"
+        }
+    },
+    {
+        "model": "company_requests.companygroup",
+        "pk": 8,
+        "fields": {
+            "name": "Ministères",
+            "description": "",
+            "category": 3,
+            "created_at": "2023-09-11T21:06:14.117Z",
+            "updated_at": "2023-09-14T12:06:51.968Z"
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 1,
+        "fields": {
+            "legal_name": "Proximus S.A",
+            "commercial_name": "Tango",
+            "address": "10 rue des bons malades",
+            "company_number": "800 777 77",
+            "email": "dpo@tango.lu",
+            "created_at": "2023-09-11T14:33:40.705Z",
+            "updated_at": "2023-09-11T14:52:22.663Z",
+            "groups": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 2,
+        "fields": {
+            "legal_name": "Post Telecom S.A",
+            "commercial_name": "Post",
+            "address": "1 rue des bians",
+            "company_number": "8002 8004",
+            "email": "privacy@post.lu",
+            "created_at": "2023-09-11T14:52:08.515Z",
+            "updated_at": "2023-09-11T14:52:08.515Z",
+            "groups": [
+                2
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 3,
+        "fields": {
+            "legal_name": "Orange S.A",
+            "commercial_name": "Orange",
+            "address": "ORANGE LUXEMBOURG, DPO, 8 rue des\r\nMérovingiens à 8070 Bertrange, Grand-Duché de Luxembourg",
+            "company_number": "80000",
+            "email": "data.protection@orangeluxembourg.lu",
+            "created_at": "2023-09-11T14:52:55.705Z",
+            "updated_at": "2023-09-11T20:09:33.397Z",
+            "groups": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 4,
+        "fields": {
+            "legal_name": "Stepstone S.A",
+            "commercial_name": "Jobs.lu",
+            "address": "Branch office of jobs.lu Limited,\r\n\r\n5 rue des Mérovingiens, L-8070 Bertrange",
+            "company_number": "27 99 27 98",
+            "email": "datenschutz@jobs.lu",
+            "created_at": "2023-09-11T14:54:22.017Z",
+            "updated_at": "2023-09-11T20:58:59.510Z",
+            "groups": [
+                4
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 5,
+        "fields": {
+            "legal_name": "Luxembourg Online",
+            "commercial_name": "LOL (Luxembourg Online)",
+            "address": "14, avenue du X Septembre\r\nL-2550 Luxembourg",
+            "company_number": "n/a",
+            "email": "legal@online.lu",
+            "created_at": "2023-09-11T20:10:49.995Z",
+            "updated_at": "2023-09-11T20:10:49.995Z",
+            "groups": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 6,
+        "fields": {
+            "legal_name": "Europa Plurimedia Synergie S.A.",
+            "commercial_name": "Moovijob",
+            "address": "24-28 Rue Goethe,\r\nL-1637 Luxembourg",
+            "company_number": "24 87 37 80",
+            "email": "dataprotection@moovijob.com",
+            "created_at": "2023-09-11T21:00:40.639Z",
+            "updated_at": "2023-09-11T21:00:40.639Z",
+            "groups": [
+                6
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 7,
+        "fields": {
+            "legal_name": "HR Communication S.A.",
+            "commercial_name": "Jobfinder.lu",
+            "address": "L-4440 Soleuvre, 125A, rue d'Esch",
+            "company_number": "26 59 80",
+            "email": "dpo@hrc.lu",
+            "created_at": "2023-09-11T21:02:34.236Z",
+            "updated_at": "2023-09-11T21:03:06.096Z",
+            "groups": [
+                7
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 8,
+        "fields": {
+            "legal_name": "Ministère de la Santé",
+            "commercial_name": "Ministère de la Santé",
+            "address": "1, rue Charles Darwin\r\nL - 1433 Luxembourg",
+            "company_number": "75512",
+            "email": "aurelia.schwander@ms.etat.lu",
+            "created_at": "2023-09-11T21:06:15.234Z",
+            "updated_at": "2023-09-11T22:32:59.265Z",
+            "groups": [
+                8
+            ]
+        }
+    },
+    {
+        "model": "company_requests.company",
+        "pk": 9,
+        "fields": {
+            "legal_name": "Ministère de l'Économie",
+            "commercial_name": "Ministère de l'Économie",
+            "address": "19-21, boulevard Royal\r\nL-2449 Luxembourg\r\nLuxembourg",
+            "company_number": "247-84137",
+            "email": "dataprotection@sip.etat.lu",
+            "created_at": "2023-09-11T21:12:07.079Z",
+            "updated_at": "2023-09-11T22:32:55.514Z",
+            "groups": [
+                8
+            ]
+        }
+    },
+    {
+        "model": "company_requests.authorizationscope",
+        "pk": 1,
+        "fields": {
+            "name": "Telecom [Suppression]",
+            "description": "test",
+            "request_type": "data_suppression",
+            "category": 1
+        }
+    },
+    {
+        "model": "company_requests.authorizationscope",
+        "pk": 2,
+        "fields": {
+            "name": "Human Ressource",
+            "description": "fdghdhgf",
+            "request_type": "data_suppression",
+            "category": 2
+        }
+    },
+    {
+        "model": "company_requests.authorizationscope",
+        "pk": 3,
+        "fields": {
+            "name": "Governement",
+            "description": "Gouvernement Test",
+            "request_type": "data_suppression",
+            "category": 3
+        }
+    },
+    {
+        "model": "company_requests.authorizationscope",
+        "pk": 5,
+        "fields": {
+            "name": "Dating [Suppression]",
+            "description": "test",
+            "request_type": "data_suppression",
+            "category": 4
+        }
+    }
+]
