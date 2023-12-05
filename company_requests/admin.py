@@ -52,8 +52,6 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
     list_filter = ['name']
     filter_horizontal = ('risk',)
-    actions = [upload_json_data]  # Add this line
-
 
 # CompanyGroup Admin
 class CompanyGroupAdmin(admin.ModelAdmin):
