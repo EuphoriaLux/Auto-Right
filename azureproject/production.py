@@ -28,6 +28,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR / 'locale'),  # Assuming your locale files will be in the "locale" directory of your project
+]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
