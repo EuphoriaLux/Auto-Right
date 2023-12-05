@@ -1,111 +1,123 @@
 <!-- request_companies_by_category.html -->
-{% extends "core/base.html" %}
+{% extends "core/new_base.html" %}
 {% load static %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'core/form_styles.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="register-form">
-        <form method="post">
-            {% csrf_token %}
-            <section class="pt-3 pb-3">
-                <div class="container">
-                    <div class="row">
-                        <div class="row align-items-center mb-3">
-                            <div class="col-6">
-                                <h3>Categories</h3>
+<div class="projects section " id="infos">
+    <div class="container">
+        <div class="row">
+            <div class="register-form">
+            <form method="post">
+                {% csrf_token %}
+                <section class="pt-3 pb-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="row align-items-center mb-3">
+                                <div class="col-6">
+                                    <h3>Categories</h3>
+                                </div>
+                                <div class="col-6">
+                                    <label for="{{ form.request_type.id_for_label }}" class="form-label">{{ form.request_type.label }}</label>
+                                    <select id="{{ form.request_type.id_for_label }}" name="{{ form.request_type.name }}" class="form-select">
+                                        <option value="" disabled selected>Select Request Type</option>
+                                        {% for choice in form.request_type %}
+                                            <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <label for="{{ form.request_type.id_for_label }}" class="form-label">{{ form.request_type.label }}</label>
-                                <select id="{{ form.request_type.id_for_label }}" name="{{ form.request_type.name }}" class="form-select">
-                                    <option value="" disabled selected>Select Request Type</option>
-                                    {% for choice in form.request_type %}
-                                        <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div id="categoryCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                                <div class="carousel-inner">
+                            <div class="col-12">
+                                <div id="categoryCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                                    <div class="carousel-inner">
 
-                                    {% for category in form.fields.categories.queryset %}
-                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                        <div class="row"> <!-- Centering the content -->
-                                            <div class="col-md-12 mb-3">
-                                                <div class="card shadow-sm h-100" data-id="{{ category.id }}" onclick="{% if category.id not in disabled_categories %}toggleCategory(event.target.closest('.card'));{% endif %}" {% if category.id in disabled_categories %}style="background-color: #f0f0f0;"{% endif %}>
-                                                    <div class="card-body d-flex flex-column">
-                                                        <h4 class="card-title mb-2">{{ category.name }}</h4>
-                                                        <p class="card-text">{{ category.description }}</p>
-                                                        <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <h6 class="mb-0 mr-2">Potential Risks</h6>
-                                                                <span class="badge bg-warning risk-count">
-                                                                    <i class="fas fa-exclamation-triangle"></i> {{ category.get_related_risks.count }}
-                                                                </span>
+                                        {% for category in form.fields.categories.queryset %}
+                                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                            <div class="row"> <!-- Centering the content -->
+                                                <div class="col-md-12 mb-3">
+                                                    <div class="card shadow-sm h-100" data-id="{{ category.id }}" onclick="{% if category.id not in disabled_categories %}toggleCategory(event.target.closest('.card'));{% endif %}" {% if category.id in disabled_categories %}style="background-color: #f0f0f0;"{% endif %}>
+                                                        <div class="card-body d-flex flex-column">
+                                                            <h4 class="card-title mb-2">{{ category.name }}</h4>
+                                                            <p class="card-text">{{ category.description }}</p>
+
+                                                            
+                                                            <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <h6 class="mb-0 mr-2">Potential Risks</h6>
+                                                                    <span class="badge bg-warning risk-count">
+                                                                        <i class="fas fa-exclamation-triangle"></i> {{ category.get_related_risks.count }}
+                                                                    </span>
+                                                                </div>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h6 class="mb-0 mr-2">Potential Companies</h6>
+                                                                    <span class="badge bg-primary company-count">
+                                                                        <i class="fas fa-building"></i> {{ category.get_company_count }}
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                            <div class="d-flex align-items-center">
-                                                                <h6 class="mb-0 mr-2">Potential Companies</h6>
-                                                                <span class="badge bg-primary company-count">
-                                                                    <i class="fas fa-building"></i> {{ category.get_company_count }}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-3">
-                                                            {% for risk in category.get_related_risks %}
-                                                            <div class="col-md-4 col-sm-6 my-2">
-                                                                <div class="card risk-card border-0 h-100 shadow-sm" style="border-left: 4px solid {{ risk.get_icon_color }};">
-                                                                    <div class="card-body">
-                                                                        <div class="d-flex align-items-center justify-content-between">
-                                                                            <h6 class="mb-0">{{ risk.name }}</h6>
-                                                                            <span data-bs-toggle="tooltip" data-placement="top" title="{{ risk.description }}">
-                                                                                <i class="{{ risk.icon }}" aria-hidden="true" style="color: {{ risk.get_icon_color }};"></i>
-                                                                            </span>
+
+
+
+
+                                                            <div class="row mt-3">
+                                                                {% for risk in category.get_related_risks %}
+                                                                <div class="col-md-4 col-sm-6 my-2">
+                                                                    <div class="card risk-card border-0 h-100 shadow-sm" style="border-left: 4px solid {{ risk.get_icon_color }};">
+                                                                        <div class="card-body">
+                                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                                <h6 class="mb-0">{{ risk.name }}</h6>
+                                                                                <span data-bs-toggle="tooltip" data-placement="top" title="{{ risk.description }}">
+                                                                                    <i class="{{ risk.icon }}" aria-hidden="true" style="color: {{ risk.get_icon_color }};"></i>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                {% endfor %}
                                                             </div>
-                                                            {% endfor %}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    {% endfor %}
-                                    
+                                        {% endfor %}
+                                        
 
-                                    
-                                </div>
-                                <div class="carousel-controls d-flex align-items-center justify-content-between">
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
-                                        <i class="fas fa-chevron-left fa-2x"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </button>
-                                    <div class="carousel-instructions">
-                                        <p>Use the arrows to navigate through the categories.</p>
+                                        
                                     </div>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
-                                        <i class="fas fa-chevron-right fa-2x"></i>
-                                        <span class="sr-only">Next</span>
-                                    </button>
-                                </div>
-                                    <div id="authorizationFormContainer">
-                                        <!-- Dynamic Authorization form will be inserted here -->
+                                    <div class="carousel-controls d-flex align-items-center justify-content-between">
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+                                            <i class="fas fa-chevron-left fa-2x"></i>
+                                            <span class="sr-only">Previous</span>
+                                        </button>
+                                        <div class="carousel-instructions">
+                                            <p>Use the arrows to navigate through the categories.</p>
+                                        </div>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+                                            <i class="fas fa-chevron-right fa-2x"></i>
+                                            <span class="sr-only">Next</span>
+                                        </button>
                                     </div>
+                                        <div id="authorizationFormContainer">
+                                            <!-- Dynamic Authorization form will be inserted here -->
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </section>          
+                <input type="text" name="categories" id="selectedCategories" style="display:none;">
+                <div id="scopeContainer">
                 </div>
-            </section>          
-            <input type="text" name="categories" id="selectedCategories" style="display:none;">
-            <div id="scopeContainer">
+                <div id="infoContainer" class="alert alert-info" style="display:none;">
+                </div>
+                <button type="submit" class="btn btn-primary register-btn">Submit</button>
+            </form>
             </div>
-            <div id="infoContainer" class="alert alert-info" style="display:none;">
-            </div>
-            <button type="submit" class="btn btn-primary register-btn">Submit</button>
-        </form>
+        </div>
     </div>
+</div>
 {% endblock %}
 {% block extra_js %}
 

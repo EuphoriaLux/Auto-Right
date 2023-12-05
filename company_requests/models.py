@@ -2,6 +2,16 @@ from django.db import models
 from user_management.models import CustomUser  
 from django.db import models
 
+
+from django.db import models
+
+class DataUpload(models.Model):
+    file = models.FileField(upload_to='uploads/')
+
+    def __str__(self):
+        return f"File id: {self.id} uploaded on {self.file.uploaded_at}"
+
+
 class Risk(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200, blank=True, null=True)

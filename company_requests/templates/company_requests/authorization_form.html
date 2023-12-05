@@ -2,9 +2,8 @@
 
 {% for scope in scopes %}
 <div class="authorization-scope">
-    <h4>AUTHORIZATION FORM FOR DATA SUPPRESSION</h4>
+    <h4>AUTHORIZATION FORM FOR DATA ERASURE</h4>
     <p>Date: {{ user_details.date_joined|date:'d-m.Y' }}</p>
-
 
     <p>
         I, {{ user_details.first_name }} {{ user_details.last_name }},
@@ -13,39 +12,31 @@
         {{ user_details.adress_zipcode }}, 
         {{ user_details.adress_city }}, LU, 
         email address 
-        {{ user_details.email }}
+        {{ user_details.email }},
+        contact number {{ user_details.phone_number }}
         ...
     </p>
-            <div class="collapse" id="collapsibleContent">
-                <p>
-
-            hereby authorize Power-Up, with registered address at 10, rue des bons malades, L-6462 Echternach, 
-            Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf 
-            to request the suppression of my personal data under applicable privacy legislation, including the General 
-            Data Protection Regulation (‘GDPR’).
+    <div class="collapse" id="collapsibleContent{{ scope.id }}">
+        <p>
+            hereby grant Power-Up, with registered address at 10, rue des bons malades, L-6462 Echternach, 
+            Luxembourg, Company number: [Company's Number] (the ‘Agent’), the authority to act on my behalf 
+            in requesting the erasure of my personal data held by third parties, in accordance with applicable 
+            privacy legislation, including the General Data Protection Regulation (‘GDPR’).
         </p>
-
-
-    <p>I agree and acknowledge that:</p>
-    <ul>
-        <li>The Agent may withdraw from this limited representation at its sole discretion.</li>
-        <li>
-            This Authorization form will terminate automatically with respect to any particular natural or legal 
-            person against which my rights under the Privacy Laws are being exercised, once that particular legal 
-            or natural person satisfies the request under the Privacy Laws submitted by the Agent.
-        </li>
-    </ul>
-
+        <p>I agree and acknowledge that:</p>
+        <ul>
+            <li>This authorization is limited solely to the erasure of my personal data and does not extend to any other matters.</li>
+            <li>The Agent may withdraw from this representation at any time, at its sole discretion.</li>
+            <li>This authorization will automatically terminate with respect to any specific natural or legal person once my request for data erasure under the Privacy Laws has been fulfilled by that specific party.</li>
+            <li>This authorization is governed by and construed in accordance with the laws of the Grand-Duchy of Luxembourg.</li>
+        </ul>
+    </div>
+    <a class="btn btn-link" data-bs-toggle="collapse" href="#collapsibleContent{{ scope.id }}" role="button" aria-expanded="false" aria-controls="collapsibleContent{{ scope.id }}">
+        Read More
+    </a>
 </div>
 
-<a class="btn btn-link" data-bs-toggle="collapse" href="#collapsibleContent" role="button" aria-expanded="false" aria-controls="collapsibleContent">
-    Read More
-</a>
-
-
-
-
-  <div class="signature-field" data-id="{{ scope.id }}">
+<div class="signature-field" data-id="{{ scope.id }}">
     <!-- Placeholder for the signature -->
     <div class="signature-placeholder" data-id="{{ scope.id }}">
         Sign here...
@@ -64,7 +55,5 @@
     </label>
 </div>
 
-
-  
 </div>
 {% endfor %}

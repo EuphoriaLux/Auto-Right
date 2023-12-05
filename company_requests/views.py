@@ -135,6 +135,7 @@ def get_authorization_scope(category_id, request_type):
 
 # views.py
 def get_authorization_form(request):
+
     try:
         category_ids_str = request.GET.get('category_ids', None)
         request_type = request.GET.get('request_type', None)
@@ -172,3 +173,74 @@ def get_authorization_form(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+    
+
+def create_company_request2(request):
+    disabled_categories = []
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        categories_str = post_data.get('categories', '')
+        if categories_str:
+            categories_list = list(map(int, categories_str.split(',')))
+            post_data.setlist('categories', categories_list)
+        
+        form = CompanyRequestForm(post_data)
+
+        if form.is_valid():
+            print("Form is valid.")
+
+            selected_scopes = request.POST.getlist('selected_scopes')
+            
+            print(f"Selected scopes: {selected_scopes}")  # Debug line 1
+            
+            for scope_id in selected_scopes:
+                if scope_id:
+                    try:
+                        int_scope_id = int(scope_id)
+                    except ValueError:
+                        print(f"Invalid scope ID: {scope_id}")
+                        continue
+
+                    print(f"Processing scope ID: {int_scope_id}")  # Debug line 2
+                    
+                    try:
+                        scope = AuthorizationScope.objects.get(id=int_scope_id)
+                        
+                        user_auth, created = UserAuthorization.objects.get_or_create(
+                            user=request.user,
+                            scope=scope
+                        )
+                        print(f"UserAuthorization for scope {scope_id}. Created: {created}")  # Debug line 4
+
+                    except AuthorizationScope.DoesNotExist:
+                        print(f"Exception when creating UserAuthorization: Invalid scope ID {scope_id}")
+                    except Exception as e:  # Debug line 5
+                        print(f"Unexpected error when processing scope ID {int_scope_id}: {str(e)}")
+
+            # Create a CompanyRequest for each company in the selected categories
+            selected_categories = form.cleaned_data.get('categories')
+            for category in selected_categories:
+                for group in category.company_groups.all():
+                    for company in group.companies.all():
+                        CompanyRequest.objects.create(
+                            user=request.user,
+                            company=company,
+                            content=post_data.get('content', ''),  # Remove or comment out this line
+                            request_type=post_data.get('request_type', 'data_suppression')
+                        )
+
+            messages.success(request, "Company request(s) created successfully.")
+            return redirect('summary_by_category')
+        else:
+            print("Form is invalid.")
+            messages.error(request, "Form is invalid. Please check the fields.")
+            print(form.errors)
+
+       
+    # Find categories that have existing CompanyRequest and disable them
+    existing_requests = CompanyRequest.objects.filter(user=request.user).values_list('company__groups__category', flat=True)
+    for category_id in existing_requests:
+        disabled_categories.append(category_id)
+
+    form = CompanyRequestForm()
+    return render(request, 'company_requests/request_2.html', {'form': form, 'disabled_categories': disabled_categories})

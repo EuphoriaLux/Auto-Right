@@ -3,20 +3,22 @@
 {% block extra_css %}
 
 {% endblock %}
+{% load i18n %}
+
 {% block content %}
 <div class="main-banner" id="top">
   <div class="container">
-      <div class="row"> <!-- Start of row -->
+      <div class="row">
           <!-- Introduction Section -->
           <div class="col-lg-6">
               <div class="caption header-text">
-                  <h6>WELCOME TO DATA RIGHTS AUTOMATION IN LUXEMBOURG</h6>
+                  <h6>{% trans "WELCOME TO DATA RIGHTS AUTOMATION IN LUXEMBOURG" %}</h6>
                   <div class="line-dec"></div>
-                  <h4>Take Command of Your <em>Digital Self</em> <span>Today!</span></h4>
-                  <p>Imagine a digital world where you’re in full control of your personal data. That’s what we offer. With Automate Your Data Rights in Luxembourg, we introduce you to the next level of data management. Don't let your information float aimlessly in the vast digital ocean. Equip yourself with our tool to retrieve, correct, delete, and port your data seamlessly. Why wait? Dive in, and shield yourself from identity theft, spam, data leaks, and much more!</p>
-                  <div class="main-button scroll-to-section"><a href="#features">Discover How It Works</a></div>
-                  <span>or</span>
-                  <div class="second-button"><a href="faqs.html">Got Questions? See FAQs</a></div>
+                  <h4>{% trans "Take Command of Your" %} <em>{% trans "Digital Self" %}</em> <span>{% trans "Today!" %}</span></h4>
+                  <p>{% trans "Imagine a digital world where you’re in full control of your personal data. That’s what we offer. With Automate Your Data Rights in Luxembourg, we introduce you to the next level of data management. Don't let your information float aimlessly in the vast digital ocean. Equip yourself with our tool to retrieve, correct, delete, and port your data seamlessly. Why wait? Dive in, and shield yourself from identity theft, spam, data leaks, and much more!" %}</p>
+                  <div class="main-button scroll-to-section"><a href="#features">{% trans "Discover How It Works" %}</a></div>
+                  <span>{% trans "or" %}</span>
+                  <div class="second-button"><a href="faqs.html">{% trans "Got Questions? See FAQs" %}</a></div>
               </div>
           </div>
           <!-- Login Form Section -->
@@ -25,16 +27,16 @@
                   <div class="col-md-12">
                       <div class="card">
                           <div class="card-header text-center">
-                              <h5>Create Your Account</h5>
-                              <h5>Join us and take control of your digital identity.</h5>
+                              <h5>{% trans "Create Your Account" %}</h5>
+                              <h5>{% trans "Join us and take control of your digital identity." %}</h5>
                           </div>
                           <div class="card-body">
                             <form method="post" id ="contact-form" action="{% url 'index' %}">
                                   {% csrf_token %}
                                   <!-- Email -->
                                   <div class="mb-4">
-                                      <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
-                                      <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" placeholder="you@example.com" required>
+                                      <label for="{{ form.email.id_for_label }}" class="form-label">{% trans "Email Address" %}</label>
+                                      <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" placeholder="{% trans "you@example.com" %}" required>
                                       {% if form.email.errors %}
                                           <div class="text-danger">
                                               {{ form.email.errors.0 }}
@@ -43,8 +45,8 @@
                                   </div>
                                   <!-- Password -->
                                   <div class="mb-4">
-                                      <label for="{{ form.password1.id_for_label }}" class="form-label">Choose a Password</label>
-                                      <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" placeholder="At least 8 characters" required>
+                                      <label for="{{ form.password1.id_for_label }}" class="form-label">{% trans "Choose a Password" %}</label>
+                                      <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" placeholder="{% trans "At least 8 characters" %}" required>
                                       {% if form.password1.errors %}
                                           <div class="text-danger">
                                               {{ form.password1.errors.0 }}
@@ -53,8 +55,8 @@
                                   </div>
                                   <!-- Confirm Password -->
                                   <div class="mb-4">
-                                      <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Your Password</label>
-                                      <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" placeholder="Repeat the password" required>
+                                      <label for="{{ form.password2.id_for_label }}" class="form-label">{% trans "Confirm Your Password" %}</label>
+                                      <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" placeholder="{% trans "Repeat the password" %}" required>
                                       {% if form.password2.errors %}
                                           <div class="text-danger">
                                               {{ form.password2.errors.0 }}
@@ -62,7 +64,7 @@
                                       {% endif %}
                                   </div>
                                   <!-- Submit Button -->
-                                  <button type="submit" class="btn btn-primary mt-3 w-100">Join Now</button>
+                                  <button type="submit" class="btn btn-primary mt-3 w-100">{% trans "Join Now" %}</button>
                               </form>
                           </div>
                       </div>
@@ -74,238 +76,239 @@
 </div>
 
 
-  <div class="services section" id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-6">
-          <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>We Empower You With <em>One-Click Automation</em> &amp;
-                        <span>Protection</span> For Your Data Rights</h2>
-                    <div class="line-dec"></div>
-                    <p>Take control of your digital identity by simplifying and automating processes related to personal data management in Luxembourg.</p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'assets/images/services-01.jpg' %}" alt="data retrieval" class="templatemo-feature">
-                  </div>
-                    <h4>One-Click Data Retrieval</h4>
-                    <p>Simplify the complex process of data retrieval from various platforms.</p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'assets/images/services-02.jpg' %}" alt="data deletion" class="templatemo-feature">
-                  </div>
-                  <h4>Automate Data Deletion</h4>
-                  <p>Schedule and manage data deletion from databases you no longer want to associate with.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'assets/images/services-03.jpg' %}" alt="data corrections" class="templatemo-feature">
-                  </div>
-                  <h4>Automate Data Corrections</h4>
-                  <p>Easily correct any inaccurate data points about you across various platforms.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'assets/images/services-04.jpg' %}" alt="data portability" class="templatemo-feature">
-                  </div>
-                  <h4>Automate Data Portability</h4>
-                  <p>Transfer your data effortlessly between different services, making it work for you.</p>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="projects section" id="projects">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h2>Explore Our <em>Features</em> &amp; <span>Modules</span></h2>
-            <div class="line-dec"></div>
-            <p>Our application offers features to ensure optimal data rights management for individuals & Companies</p>
-          </div>
-        </div>
-      </div> 
-    </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-features owl-carousel">
-            <div class="item">
-              <img src="{% static 'assets/images/projects-01.jpg' %}" alt="Data Retrieval Module">
-              <div class="down-content">
-                <h4>One-Click Data Retrieval</h4>
-                <a href="#"><i class="fa fa-link"></i></a>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{% static 'assets/images/projects-02.jpg' %}" alt="Data Deletion Automation">
-              <div class="down-content">
-                <h4>Automated Data Deletion</h4>
-                <a href="#"><i class="fa fa-link"></i></a>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{% static 'assets/images/projects-03.jpg' %}" alt="Data Correction System">
-              <div class="down-content">
-                <h4>Automate Data Corrections</h4>
-                <a href="#"><i class="fa fa-link"></i></a>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{% static 'assets/images/projects-04.jpg' %}" alt="Data Portability Suite">
-              <div class="down-content">
-                <h4>Effortless Data Portability</h4>
-                <a href="#"><i class="fa fa-link"></i></a>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{% static 'assets/images/projects-02.jpg' %}" alt="Risk Prevention Dashboard">
-              <div class="down-content">
-                <h4>Risk Prevention</h4>
-                <a href="#"><i class="fa fa-link"></i></a>
-              </div>
-            </div>
-            <div class="item">
-              <img src="{% static 'assets/images/projects-03.jpg' %}" alt="User-Friendly Interface">
-              <div class="down-content">
-                <h4>User-Friendly Interface</h4>
-                <a href="#"><i class="fa fa-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="infos section" id="infos">
-    <div class="container">
+<div class="services section" id="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="main-content">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="left-image">
-                                <img src="{% static 'assets/images/left-infos.jpg' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="section-heading">
-                                <h2>Empowering You to <em>Take Control</em> of Your <span>Digital Identity</span></h2>
-                                <div class="line-dec"></div>
-                                <p>Our cutting-edge Django application is designed to simplify and automate the management of your personal data rights. Ensure your digital safety in a world with increasing risks associated with data privacy.</p>
-                            </div>
-                            <div class="skills">
-                                <div class="skill-slide marketing">
-                                    <div class="fill"></div>
-                                    <h6>Data Retrieval</h6>
-                                    <span>95%</span>
-                                </div>
-                                <div class="skill-slide digital">
-                                    <div class="fill"></div>
-                                    <h6>Data Deletion</h6>
-                                    <span>90%</span>
-                                </div>
-                                <div class="skill-slide media">
-                                    <div class="fill"></div>
-                                    <h6>Data Corrections</h6>
-                                    <span>93%</span>
-                                </div>
-                            </div>
-                            <p class="more-info">With features like One-Click Automation, Risk Prevention, and Data Portability, our application ensures you have complete control over your data across various platforms, giving you peace of mind in an interconnected digital landscape.</p>
-                        </div>
-                    </div>
-                </div>
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <h2>{% trans "We Empower You With" %} <em>{% trans "One-Click Automation" %}</em> &amp;
+                <span>{% trans "Protection" %}</span> {% trans "For Your Data Rights" %}</h2>
+              <div class="line-dec"></div>
+              <p>{% trans "Take control of your digital identity by simplifying and automating processes related to personal data management in Luxembourg." %}</p>
             </div>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <div class="service-item">
+              <div class="icon">
+                <img src="{% static 'assets/images/services-01.jpg' %}" alt="{% trans 'data retrieval' %}" class="templatemo-feature">
+              </div>
+              <h4>{% trans "One-Click Data Retrieval" %}</h4>
+              <p>{% trans "Simplify the complex process of data retrieval from various platforms." %}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <div class="service-item">
+              <div class="icon">
+                <img src="{% static 'assets/images/services-02.jpg' %}" alt="{% trans 'data deletion' %}" class="templatemo-feature">
+              </div>
+              <h4>{% trans "Automate Data Deletion" %}</h4>
+              <p>{% trans "Schedule and manage data deletion from databases you no longer want to associate with." %}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <div class="service-item">
+              <div class="icon">
+                <img src="{% static 'assets/images/services-03.jpg' %}" alt="{% trans 'data corrections' %}" class="templatemo-feature">
+              </div>
+              <h4>{% trans "Automate Data Corrections" %}</h4>
+              <p>{% trans "Easily correct any inaccurate data points about you across various platforms." %}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <div class="service-item">
+              <div class="icon">
+                <img src="{% static 'assets/images/services-04.jpg' %}" alt="{% trans 'data portability' %}" class="templatemo-feature">
+              </div>
+              <h4>{% trans "Automate Data Portability" %}</h4>
+              <p>{% trans "Transfer your data effortlessly between different services, making it work for you." %}</p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
-  <div class="contact-us section" id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="contact-us-content">
-            <div class="row">
-              <div class="col-lg-4">
-                <div id="map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d20597.888818694115!2d6.4300369!3d49.8098288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sde!4v1695256837981!5m2!1sen!2sde" width="100%" height="670px" frameborder="0" style="border:0; border-radius: 23px;" allowfullscreen=""></iframe>
+  
+<div class="projects section" id="projects">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-heading">
+          <h2>{% trans "Explore Our" %} <em>{% trans "Features" %} &amp; <span>{% trans "Modules" %}</span></em></h2>
+          <div class="line-dec"></div>
+          <p>{% trans "Our application offers features to ensure optimal data rights management for individuals & Companies" %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="owl-features owl-carousel">
+          <div class="item">
+            <img src="{% static 'assets/images/projects-01.jpg' %}" alt="{% trans "Data Retrieval Module" %}">
+            <div class="down-content">
+              <h4>{% trans "One-Click Data Retrieval" %}</h4>
+              <a href="#"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+          <div class="item">
+            <img src="{% static 'assets/images/projects-02.jpg' %}" alt="{% trans "Data Deletion Automation" %}">
+            <div class="down-content">
+              <h4>{% trans "Automated Data Deletion" %}</h4>
+              <a href="#"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+          <div class="item">
+            <img src="{% static 'assets/images/projects-03.jpg' %}" alt="{% trans "Data Correction System" %}">
+            <div class="down-content">
+              <h4>{% trans "Automate Data Corrections" %}</h4>
+              <a href="#"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+          <div class="item">
+            <img src="{% static 'assets/images/projects-04.jpg' %}" alt="{% trans "Effortless Data Portability" %}">
+            <div class="down-content">
+              <h4>{% trans "Effortless Data Portability" %}</h4>
+              <a href="#"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+          <div class="item">
+            <img src="{% static 'assets/images/projects-02.jpg' %}" alt="{% trans "Risk Prevention Dashboard" %}">
+            <div class="down-content">
+              <h4>{% trans "Risk Prevention" %}</h4>
+              <a href="#"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+          <div class="item">
+            <img src="{% static 'assets/images/projects-03.jpg' %}" alt="{% trans "User-Friendly Interface" %}">
+            <div class="down-content">
+              <h4>{% trans "User-Friendly Interface" %}</h4>
+              <a href="#"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="infos section" id="infos">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-content">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="left-image">
+                <img src="{% static 'assets/images/left-infos.jpg' %}" alt="">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="section-heading">
+                <h2>{% trans "Empowering You to" %} <em>{% trans "Take Control" %} {% trans "of Your" %} <span>{% trans "Digital Identity" %}</span></h2>
+                <div class="line-dec"></div>
+                <p>{% trans "Our cutting-edge Django application is designed to simplify and automate the management of your personal data rights. Ensure your digital safety in a world with increasing risks associated with data privacy." %}</p>
+              </div>
+              <div class="skills">
+                <div class="skill-slide marketing">
+                  <div class="fill"></div>
+                  <h6>{% trans "Data Retrieval" %}</h6>
+                  <span>95%</span>
+                </div>
+                <div class="skill-slide digital">
+                  <div class="fill"></div>
+                  <h6>{% trans "Data Deletion" %}</h6>
+                  <span>90%</span>
+                </div>
+                <div class="skill-slide media">
+                  <div class="fill"></div>
+                  <h6>{% trans "Data Corrections" %}</h6>
+                  <span>93%</span>
                 </div>
               </div>
-              <div class="col-lg-8">
-                <form id="contact-form" action="" method="post">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="section-heading">
-                        <h2><em>Contact Us</em> &amp; Get In <span>Touch</span></h2>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="surname" name="surname" id="surname" placeholder="Your Surname..." autocomplete="on" required>
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="subject" name="subject" id="subject" placeholder="Subject..." autocomplete="on" >
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-12">
-                      <fieldset>
-                        <textarea name="message" id="message" placeholder="Your Message"></textarea>
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-12">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="orange-button">Send Message Now</button>
-                      </fieldset>
+              <p class="more-info">{% trans "With features like One-Click Automation, Risk Prevention, and Data Portability, our application ensures you have complete control over your data across various platforms, giving you peace of mind in an interconnected digital landscape." %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-us section" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="contact-us-content">
+          <div class="row">
+            <div class="col-lg-4">
+              <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d20597.888818694115!2d6.4300369!3d49.8098288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sde!4v1695256837981!5m2!1sen!2sde" width="100%" height="670px" frameborder="0" style="border:0; border-radius: 23px;" allowfullscreen=""></iframe>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <form id="contact-form" action="" method="post">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="section-heading">
+                      <h2><em>{% trans "Contact Us" %}</em> &amp; {% trans "Get In" %} <span>{% trans "Touch" %}</span></h2>
                     </div>
                   </div>
-                </form>
-                <div class="more-info">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="info-item">
-                        <i class="fa fa-phone"></i>
-                        <h4><a href="#">+352-621-163-882</a></h4>
-                      </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="name" name="name" id="name" placeholder="{% trans "Your Name..." %}" autocomplete="on" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="surname" name="surname" id="surname" placeholder="{% trans "Your Surname..." %}" autocomplete="on" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="{% trans "Your E-mail..." %}" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="subject" name="subject" id="subject" placeholder="{% trans "Subject..." %}" autocomplete="on" >
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <textarea name="message" id="message" placeholder="{% trans "Your Message" %}"></textarea>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="orange-button">{% trans "Send Message Now" %}</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+              <div class="more-info">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="info-item">
+                      <i class="fa fa-phone"></i>
+                      <h4><a href="#">+352-621-163-882</a></h4>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="info-item">
-                        <i class="fa fa-envelope"></i>
-                        <h4><a href="#">info@power-up.lu</a></h4>
-                      </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-item">
+                      <i class="fa fa-envelope"></i>
+                      <h4><a href="#">info@power-up.lu</a></h4>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="info-item">
-                        <i class="fa fa-map-marker"></i>
-                        <h4><a href="#">Power-Up</a></h4>
-                      </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-item">
+                      <i class="fa fa-map-marker"></i>
+                      <h4><a href="#">Power-Up</a></h4>
                     </div>
                   </div>
                 </div>
@@ -316,6 +319,8 @@
       </div>
     </div>
   </div>
+</div>
+
 
 
   {% block extra_js %} 

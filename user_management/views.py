@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .utils import send_test_email  # Assuming the send_test_email is in utils.py
 from .forms import *
 from company_requests.models import CompanyRequest
+from django.utils.translation import gettext as _
 
 
 # Registration view
@@ -27,7 +28,6 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'user_management/register.html', {'form': form})
 
-
 # Login view
 def login_view(request):
     if request.method == "POST":
@@ -47,7 +47,6 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
-
 @login_required
 def profile(request):
     total_requests = CompanyRequest.objects.filter(user=request.user).count()
@@ -65,10 +64,6 @@ def profile(request):
 
     return render(request, 'user_management/profile.html', context)
 
-
-
-
-
 # Edit profile view
 @login_required
 def edit_profile(request):
@@ -80,10 +75,6 @@ def edit_profile(request):
     else:
         form = EditProfileForm(instance=request.user)
     return render(request, 'user_management/edit_profile.html', {'form': form})
-
-
-
-
 
 @login_required
 def profile_view(request):
@@ -97,7 +88,6 @@ def profile_view(request):
         edit_form = EditProfileForm(instance=request.user)
 
     return render(request, 'user_management/profile.html', {'edit_form': edit_form})
-
 
 # views.py
 def onboarding_step1(request):
@@ -124,7 +114,7 @@ def onboarding_step2(request):
     else:
         form = OnboardingStep2Form(instance=request.user)
         
-    return render(request, 'user_management/onboarding_step2.html')
+    return render(request, 'user_management/onboarding_step2.html', {'message': _('Welcome to step 2!')})
 
 def onboarding_step3(request):
     if request.method == 'POST':

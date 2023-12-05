@@ -13,13 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import include, path
-from user_management import urls
+from django.conf.urls.i18n import i18n_patterns
+from django.views.i18n import JavaScriptCatalog
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+    path('i18n/', include('django.conf.urls.i18n')),
+]
+
+urlpatterns += i18n_patterns(
     path('users/', include('user_management.urls')),  # Include the user_management app URLs
     path('', include('core.urls')),
     path('', include('company_requests.urls')),
-]
+    prefix_default_language=False,  # Set to True if you want to show the language prefix for the default language
+)
