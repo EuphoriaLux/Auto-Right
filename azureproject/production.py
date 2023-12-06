@@ -1,20 +1,13 @@
 import os
 
-# Add your custom host(s) here
-additional_allowed_hosts = ['power-up.lu']
-additional_csrf_trusted_origins = ['https://power-up.lu']
+from .settings import *  # noqa
+from .settings import BASE_DIR
 
 # Configure the domain name using the environment variable
 # that Azure automatically creates for us.
-azure_host = os.environ.get('WEBSITE_HOSTNAME')
-if azure_host:
-    ALLOWED_HOSTS = [azure_host] + additional_allowed_hosts
-    CSRF_TRUSTED_ORIGINS = ['https://' + azure_host] + additional_csrf_trusted_origins
-else:
-    ALLOWED_HOSTS = additional_allowed_hosts
-    CSRF_TRUSTED_ORIGINS = additional_csrf_trusted_origins
-
-DEBUG = True
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+DEBUG = False
 
 # WhiteNoise configuration
 MIDDLEWARE = [
