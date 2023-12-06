@@ -2053,9 +2053,7 @@ body {
   transition: transform 0.3s; /* Smooth scaling on hover */
 }
 
-.card:hover {
-  transform: scale(1.03); /* Slightly increase size on hover */
-}
+
 
 .card-header {
   background: linear-gradient(90deg, rgba(85,0,227,1) 0%, rgba(198,61,255,1) 100%); /* Using gradient from your styles */
