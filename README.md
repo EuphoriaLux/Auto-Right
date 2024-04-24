@@ -1,115 +1,179 @@
-# Deploy a Python (Django) web app with PostgreSQL in Azure
+Automate Your Data Rights in Luxembourg
+Overview
+Automate Your Data Rights in Luxembourg is a cutting-edge Django application designed to simplify and automate the management of your personal data rights. With the increasing risks associated with data privacy, it has never been more important to take control of your digital identity. Our application empowers you to do just that, all with a single click!
 
-This is a Python web app using the Django framework and the Azure Database for PostgreSQL relational database service. The Django app is hosted in a fully managed Azure App Service. This app is designed to be be run locally and then deployed to Azure. You can either deploy this project by following the tutorial [*Deploy a Python (Django or Flask) web app with PostgreSQL in Azure*](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app) or by using the [Azure Developer CLI (azd)](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview) according to the instructions below.
+Main Features
+One-Click Data Rights Automation
+Automate Data Retrieval: Simplify the complex process of data retrieval from various platforms.
 
-## Requirements
+Automate Data Deletion: Schedule and manage data deletion from databases that you no longer want to be a part of.
 
-The [requirements.txt](./requirements.txt) has the following packages:
+Automate Data Corrections: Easily correct any incorrect data points about you across various platforms.
 
-| Package | Description |
-| ------- | ----------- |
-| [Django](https://pypi.org/project/Django/) | Web application framework. |
-| [pyscopg2-binary](https://pypi.org/project/psycopg-binary/) | PostgreSQL database adapter for Python. |
-| [python-dotenv](https://pypi.org/project/python-dotenv/) | Read key-value pairs from .env file and set them as environment variables. In this sample app, those variables describe how to connect to the database locally. <br><br> This package is used in the [manage.py](./manage.py) file to load environment variables. |
-| [whitenoise](https://pypi.org/project/whitenoise/) | Static file serving for WSGI applications, used in the deployed app. <br><br> This package is used in the [azureproject/production.py](./azureproject/production.py) file, which configures production settings. |
+Automate Data Portability: Make your data work for you by easily transferring it between different services.
 
-## Using this project with the Azure Developer CLI (azd)
+Risk Prevention
+Our application is designed to guard you against the following risks:
 
-This project is designed to work well with the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview),
-which makes it easier to develop apps locally, deploy them to Azure, and monitor them.
+Identity Theft: By managing your data proactively, reduce the risk of your identity being stolen.
 
-### Local development
+Spam Mail and Calls: Control who has access to your contact information, thus reducing unsolicited communications.
 
-This project has Dev Container support, so you can open it in Github Codespaces or local VS Code with the Dev Containers extension. If you're unable to open the Dev Container,
-then it's best to first [create a Python virtual environment](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments) and activate that.
+Data Leaks: Minimize the amount of personal information available online, thereby limiting exposure to data leaks.
 
-1. Install the requirements:
+Targeted Advertising: Control the data that advertisers use to target you.
 
-    ```shell
-    python3 -m pip install -r requirements.txt
-    ```
+Affected Credit Rating: By ensuring your financial data is accurate and secure, mitigate risks to your credit rating.
 
-2. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the Dev Container, copy the values from `.env.sample.devcontainer`. 
+Stalking: Limit the personal information that is publicly available, reducing the risk of stalking.
 
-3. In the `.env` file, fill in a secret value for `SECRET_KEY`. You can use this command to generate an appropriate value:
 
-    ```shell
-    python -c 'import secrets; print(secrets.token_hex())'
-    ```
+### Dating
 
-4. Run the migrations: (or use VS Code "Run" button and select "Migrate")
+**Risk Prevention**:  
+1. **Identity Theft**: Personal preferences and intimate details can be misused.
+2. **Stalking**: Information from dating profiles can be used to stalk individuals.
+3. **Blackmail**: Personal images or messages could be used for blackmailing purposes.
+4. **Emotional Exploitation**: Personal data can be used to manipulate your emotions or behavior.
 
-    ```shell
-    python3 manage.py migrate
-    ```
+---
 
-5. Run the local server: (or use VS Code "Run" button and select "Run server")
+### Telecom
 
-    ```shell
-    python3 manage.py runserver
-    ```
+**Risk Prevention**:  
+1. **Identity Theft**: Stored metadata could be misused to impersonate you.
+2. **Spam Mail and Calls**: Telecom data can be sold to third parties for unsolicited communications.
+3. **Location Tracking**: Metadata can reveal your location over time.
+4. **Invasion of Privacy**: Call and text logs could be analyzed to infer private information.
 
-### Deployment
+---
 
-This repo is set up for deployment on Azure App Service (w/PostGreSQL server) using the configuration files in the `infra` folder.
+### Human Resource
 
-🎥 Watch a deployment of the code in [this screencast](https://www.youtube.com/watch?v=JDlZ4TgPKYc).
+**Risk Prevention**:  
+1. **Identity Theft**: Employee records could be used to impersonate you.
+2. **Affected Credit Rating**: Incorrect financial data could impact your creditworthiness.
+3. **Discrimination**: Personal information like age, gender, or ethnicity could be misused.
+4. **Career Sabotage**: Confidential performance reviews could be leaked to harm your career.
 
-Steps for deployment:
+---
 
-1. Sign up for a [free Azure account](https://azure.microsoft.com/free/)
-2. Install the [Azure Dev CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd). (If you opened this repository in a Dev Container, that part will be done for you.)
-3. Initialize a new `azd` environment:
+### Government
 
-    ```shell
-    azd init
-    ```
+**Risk Prevention**:  
+1. **Identity Theft**: Improperly stored ID and tax records could be used for fraudulent activities.
+2. **Unauthorized Data Sharing**: Your data could be shared with other agencies without your consent.
+3. **Civil Liberties**: Inappropriate data collection could infringe on your freedoms.
+4. **Selective Enforcement**: Your data could be used to subject you to selective legal scrutiny.
 
-    It will prompt you to provide a name (like "django-app") that will later be used in the name of the deployed resources.
+---
 
-4. Provision and deploy all the resources:
+### Healthcare
 
-    ```shell
-    azd up
-    ```
+**Risk Prevention**:  
+1. **Medical Identity Theft**: Unauthorized access to medical records for fraudulent use.
+2. **Data Leaks**: Sensitive health data could be exposed in a data breach.
+3. **Healthcare Fraud**: Unauthorized access could lead to fraudulent claims.
+4. **Misdiagnosis Risks**: Incorrect medical data could lead to improper treatment.
 
-    It will prompt you to login, pick a subscription, and provide a location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location (like to "centralus") can help, as there may be availability constraints for some of the resources.
+---
 
-5. When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the restaurant review app! 🎉 If you see an error, open the Azure Portal from the URL in the command output, navigate to the App Service, select Logstream, and check the logs for any errors.
+### Retail and E-commerce
 
-    ![Screenshot of Django restaurants website](screenshot_website.png)
+**Risk Prevention**:  
+1. **Targeted Advertising**: Your purchase history can be used to target you with ads.
+2. **Unauthorized Transactions**: Stored payment data could be used for unauthorized purchases.
+3. **Price Discrimination**: Your data could be used to offer you higher prices.
+4. **Product Scams**: Personal information could be used to target you with fraudulent products.
 
-6. If you'd like to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
+---
 
-    ```shell
-    python3 manage.py createsuperuser
-    ```
+### Social Media
 
-7. When you've made any changes to the app code, you can just run:
+**Risk Prevention**:  
+1. **Stalking**: Public posts and location data can make you vulnerable to stalking.
+2. **Data Leaks**: Personal photos and posts could be exposed in a data breach.
+3. **Cyberbullying**: Personal data can be used to harass or intimidate you online.
+4. **Political Manipulation**: Your data could be used to target you with divisive or misleading information.
 
-    ```shell
-    azd deploy
-    ```
+---
 
-### CI/CD pipeline
+### Banking and Finance
 
-This project includes a Github workflow for deploying the resources to Azure
-on every push. That workflow requires several Azure-related authentication secrets to be stored as Github action secrets. To set that up, run:
+**Risk Prevention**:  
+1. **Identity Theft**: Sensitive financial data can be used for identity theft.
+2. **Affected Credit Rating**: Inaccurate reporting can negatively impact your credit score.
+3. **Financial Fraud**: Account information could be used for illegal financial activities.
+4. **Investment Risks**: Personal financial data could be used to manipulate your investments.
 
-```shell
-azd pipeline config
-```
+---
 
-### Monitoring
+### Travel and Transportation
 
-The deployed resources include a Log Analytics workspace with an Application Insights dashboard to measure metrics like server response time.
+**Risk Prevention**:  
+1. **Identity Theft**: Passport and booking details could be used to impersonate you.
+2. **Unauthorized Transactions**: Stored payment data could be misused.
+3. **Travel Scams**: Your data could be used to offer you fraudulent travel deals.
+4. **Cultural Profiling**: Travel data can be used to profile you based on your visited locations.
 
-To open that dashboard, just run:
+---
 
-```shell
-azd monitor --overview
-```
+### Education
 
-## Getting help
+**Risk Prevention**:  
+1. **Identity Theft**: Academic records can contain enough information for identity theft.
+2. **Data Leaks**: Personal information could be exposed in a data breach.
+3. **Educational Fraud**: Academic records could be altered or misused.
+4. **Social Engineering**: Personal information could be used to manipulate or deceive you.
 
-If you're working with this project and running into issues, please post in [Issues](/issues).
+
+
+
+**AUTHORIZATION FORM FOR DATA SUPPRESSION**
+
+Date: [Date]
+
+I, [Your Full Name], residing at [Your Address], [Postal Code], [City], LU, email address [Your Email Address] hereby authorize [Company Name], with registered address at [Company's Address], [Postal Code] [City], Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf to request the suppression of my personal data under applicable privacy legislation, including the General Data Protection Regulation (‘GDPR’).
+
+I agree and acknowledge that:
+
+- The Agent may withdraw from this limited representation at its sole discretion.
+- This Authorization form will terminate automatically with respect to any particular natural or legal person against which my rights under the Privacy Laws are being exercised, once that particular legal or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+
+[Your Full Name]
+
+---
+
+**AUTHORIZATION FORM FOR DATA RETRIEVAL**
+
+Date: [Date]
+
+I, [Your Full Name], residing at [Your Address], [Postal Code], [City], LU, email address [Your Email Address] hereby authorize [Company Name], with registered address at [Company's Address], [Postal Code] [City], Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf to retrieve my personal data under applicable privacy legislation, including the General Data Protection Regulation (‘GDPR’).
+
+I agree and acknowledge that:
+
+- The Agent may withdraw from this limited representation at its sole discretion.
+- This Authorization form will terminate automatically with respect to any particular natural or legal person against which my rights under the Privacy Laws are being exercised, once that particular legal or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+
+[Your Full Name]
+
+---
+
+**AUTHORIZATION FORM FOR DATA MODIFICATION**
+
+Date: [Date]
+
+I, [Your Full Name], residing at [Your Address], [Postal Code], [City], LU, email address [Your Email Address] hereby authorize [Company Name], with registered address at [Company's Address], [Postal Code] [City], Luxembourg, Company number: [Company's Number] (the ‘Agent’), to perform all necessary actions on my behalf to modify my personal data under applicable privacy legislation, including the General Data Protection Regulation (‘GDPR’).
+
+I agree and acknowledge that:
+
+- The Agent may withdraw from this limited representation at its sole discretion.
+- This Authorization form will terminate automatically with respect to any particular natural or legal person against which my rights under the Privacy Laws are being exercised, once that particular legal or natural person satisfies the request under the Privacy Laws submitted by the Agent.
+
+[Your Full Name]
+
+---
+
+Each form is tailored to the specific request type and grants the 'Agent' (in this case, the company being authorized) the ability to act on behalf of the user in accordance with GDPR for that specific request. 
+
+You can adjust the fields inside the brackets as per your system's structure to automate the process or to use them as templates.
